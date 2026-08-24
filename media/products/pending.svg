@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">이미지 승인 대기</title>
+  <desc id="description">제품 또는 현장 이미지가 공개 승인 전임을 알리는 중립 안내 이미지입니다.</desc>
+  <rect width="1200" height="675" fill="#071225"/>
+  <path d="M120 506H1080M120 169H1080M240 120V555M960 120V555" stroke="#2CCFC3" stroke-opacity=".35" stroke-width="2" fill="none"/>
+  <rect x="360" y="268" width="480" height="139" rx="8" fill="#101D3A" stroke="#2CCFC3" stroke-width="2"/>
+  <text x="600" y="326" fill="#F8FAFC" font-family="sans-serif" font-size="30" font-weight="700" text-anchor="middle">이미지 승인 대기</text>
+  <text x="600" y="366" fill="#D0D5DD" font-family="sans-serif" font-size="18" text-anchor="middle">공개 승인 후 실제 제품 또는 현장 이미지로 교체됩니다</text>
+</svg>
