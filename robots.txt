@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jiyoueng.com/sitemap-index.xml
