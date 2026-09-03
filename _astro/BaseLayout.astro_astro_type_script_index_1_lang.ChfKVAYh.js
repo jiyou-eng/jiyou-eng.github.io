@@ -1,0 +1,1 @@
+import"./magnetic.D2Ek6UfV.js";
