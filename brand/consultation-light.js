@@ -64,7 +64,7 @@
    if (!body) return;
    body.setAttribute('data-jglow-body','');
    const light = document.createElement('i');
-   light.className = 'jg-light'; light.setAttribute('aria-hidden','true'); body.append(light);
+   light.className = 'jg-light'; light.setAttribute('aria-hidden','true'); (type === 'product' ? el : body).append(light);
    const edge = document.createElement('i');
    edge.className = 'jg-edge'; edge.setAttribute('aria-hidden','true'); el.append(edge);
   }));
@@ -83,8 +83,10 @@
    if (active.dataset.jglow === 'product') {
     const body = active.querySelector('[data-jglow-body]');
     const box = body.getBoundingClientRect();
-    body.style.setProperty('--jg-x', reduce.matches ? '50%' : `${x-box.left}px`);
-    body.style.setProperty('--jg-y', reduce.matches ? '50%' : `${y-box.top}px`);
+    const light = active.querySelector('.jg-light');
+    Object.assign(light.style,{inset:'auto',left:`${box.left-rect.left}px`,top:`${box.top-rect.top}px`,width:`${box.width}px`,height:`${box.height}px`,borderRadius:'inherit'});
+    light.style.setProperty('--jg-x', reduce.matches ? '50%' : `${x-box.left}px`);
+    light.style.setProperty('--jg-y', reduce.matches ? '50%' : `${y-box.top}px`);
    }
    active.setAttribute('data-jglow-active','');
   });

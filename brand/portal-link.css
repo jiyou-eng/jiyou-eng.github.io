@@ -116,8 +116,8 @@
 
 /* Shared reflection scale: restrained surfaces, local edges, original imagery. */
 [data-jglow]{--jg-rx:240px;--jg-ry:170px;--jg-strength:.13;isolation:isolate}
-[data-jglow]:not([data-field-point]),[data-jglow-body]:not([data-field-point]){position:relative}
-[data-jglow-body]{isolation:isolate}
+[data-jglow]:not([data-field-point]),[data-jglow-body]:not([data-field-point]):not(.product-card__content){position:relative}
+[data-jglow-body]:not(.product-card__content){isolation:isolate}
 [data-jglow] .jg-light,[data-jglow]>.jg-edge{
  display:block;position:absolute;inset:0;pointer-events:none;border-radius:inherit;
  opacity:0;transition:opacity 180ms ease;margin:0;
