@@ -1,0 +1,156 @@
+/* Employee portal: ceramic white glass distinguishes internal access from green contact. */
+.header-portal{
+ box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+ min-height:44px;padding:0 var(--space-16,16px);border:1px solid #d7ddd8;
+ border-radius:var(--r-capsule,999px);color:var(--navy-900,#18253e);
+ font:inherit;font-size:var(--font-small);font-weight:var(--weight-small);
+ text-decoration:none;white-space:nowrap;flex-shrink:0;position:relative;isolation:isolate;
+ background-color:#f4f5f2;
+ background-image:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.28) 45%,rgba(220,226,220,.2));
+ box-shadow:inset 0 1px 1px #fff,inset 0 -1px 1px rgba(39,60,46,.1),0 2px 4px rgba(15,35,24,.08),0 7px 16px -10px rgba(15,35,24,.2);
+ transition:transform var(--motion-hover,180ms) var(--ease-hover,ease),
+ box-shadow var(--motion-hover,180ms) var(--ease-hover,ease),
+ background-color var(--motion-hover,180ms) var(--ease-hover,ease);
+}
+.header-portal:focus-visible{outline:2px solid var(--navy-800,#243552);outline-offset:3px}
+.header-portal span{font-size:14px;line-height:1}
+@media(hover:hover){.header-portal:hover{
+ background-color:#ffffff;
+ box-shadow:var(--material-edge-filled),var(--shadow-e2-hover);
+ transform:translateY(-1px);
+}}
+.header-portal:active{transform:scale(var(--scale-press,.97));box-shadow:var(--material-pressed);transition-duration:var(--motion-press,100ms)}
+@media(width<=679px){.header-portal{display:none}}
+@media(width>=680px) and (width<=900px){
+ .site-header__inner[data-astro-cid-6stfpryv]{gap:4px;padding-inline:12px}
+ .desktop-nav[data-astro-cid-6stfpryv]{gap:0}
+ .desktop-nav[data-astro-cid-6stfpryv] a[data-astro-cid-6stfpryv]{padding-inline:4px}
+ .header-cta[data-astro-cid-6stfpryv]{margin-left:0;padding-inline:12px}
+ .header-portal{padding-inline:10px}
+}
+@media(prefers-reduced-motion:reduce){.header-portal,.header-portal:hover,.header-portal:active{transform:none;transition:none}}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.header-portal{background-image:none;box-shadow:none;border-color:currentColor}}
+@media(forced-colors:active){.header-portal{color:ButtonText;background:ButtonFace;border-color:ButtonText;box-shadow:none}.header-portal:focus-visible{outline-color:Highlight}}
+
+/* Keep the employee shortcut text-only in both navigation layouts. */
+.header-portal > span[aria-hidden="true"],
+#mobile-drawer a[aria-label="사내 포털 (새 탭)"] > span[aria-hidden="true"]{display:none}
+
+/* Brand emphasis and shared consultation-card light. */
+#sense-circle-title mark{
+ color:#075b42;background:linear-gradient(180deg,transparent 58%,#bcead5 58%,#d9f3e7 94%,transparent 94%);
+ padding:.02em .06em .08em;box-shadow:none;border-radius:.12em;
+ -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+/* Broad diffuse light and a separate, thin edge reflection on white ceramic. */
+.next-step.next-step--card[data-spotlight]{
+ --consultation-light-in:260ms;--consultation-light-out:180ms;
+ position:relative;isolation:isolate;overflow:hidden;
+ background:#f7f9f8;border-color:#dfe5e2;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 12px 30px -22px rgba(24,47,37,.20);
+ transition:border-color 220ms ease,box-shadow 220ms ease;
+}
+.next-step.next-step--card[data-spotlight] > *{position:relative;z-index:2}
+.next-step.next-step--card[data-spotlight]::after{
+ content:"";display:block;position:absolute;inset:0;pointer-events:none;z-index:0;border-radius:inherit;
+ background:
+ radial-gradient(ellipse 360px 230px at var(--light-x,50%) var(--light-y,50%),rgba(255,255,255,.72) 0%,rgba(255,255,255,.32) 38%,rgba(255,255,255,0) 78%),
+ radial-gradient(ellipse 620px 390px at var(--light-x,50%) var(--light-y,50%),rgba(119,183,155,.17) 0%,rgba(143,192,170,.10) 38%,rgba(167,204,188,.04) 64%,transparent 88%);
+ opacity:0;transform:none;transition:opacity var(--consultation-light-out) ease;
+}
+/* The mask limits the pointer reflection to the inner 1px rim. */
+.next-step.next-step--card[data-spotlight]::before{
+ content:"";display:block;position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;padding:1px;
+ background:radial-gradient(ellipse 330px 260px at var(--light-x,50%) var(--light-y,50%),rgba(111,163,140,.62),rgba(164,193,179,.22) 48%,transparent 78%);
+ -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+ -webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;
+ opacity:0;transition:opacity var(--consultation-light-out) ease;
+}
+@media(hover:hover) and (pointer:fine){
+ .next-step.next-step--card[data-spotlight][data-light-active]{
+  border-color:#d5e0da;
+  box-shadow:inset 0 1px 0 #fff,0 16px 34px -23px rgba(24,64,44,.25);
+ }
+ .next-step.next-step--card[data-spotlight][data-light-active]::after,
+ .next-step.next-step--card[data-spotlight][data-light-active]::before{opacity:1;transition-duration:var(--consultation-light-in)}
+}
+.next-step.next-step--card[data-spotlight]:has(:focus-visible){outline:2px solid #568b70;outline-offset:3px}
+@media(hover:none){.next-step.next-step--card[data-spotlight]::before,.next-step.next-step--card[data-spotlight]::after{display:none}}
+@media(prefers-reduced-motion:reduce){
+ .next-step.next-step--card[data-spotlight],.next-step.next-step--card[data-spotlight]::before,.next-step.next-step--card[data-spotlight]::after{transition:none}
+}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more),(forced-colors:active){
+ .next-step.next-step--card[data-spotlight]::before,.next-step.next-step--card[data-spotlight]::after{display:none}
+ .next-step.next-step--card[data-spotlight][data-light-active]{border-color:currentColor;box-shadow:none}
+}
+@media(forced-colors:active){.next-step.next-step--card[data-spotlight]{background:Canvas;border-color:CanvasText;box-shadow:none}}
+
+@media(forced-colors:active){#sense-circle-title mark{color:HighlightText;background:Highlight}}
+
+/* Glazed ceramic contact controls pair with the white employee shortcut. */
+.site-header .header-cta[data-astro-cid-6stfpryv],
+#mobile-drawer .drawer__cta{
+ color:#fff;border:1px solid #216747;
+ background:#246d4c;
+ background-image:linear-gradient(180deg,#559271 0%,#367f59 38%,#216b48 72%,#1e6042 100%);
+ box-shadow:inset 0 1px 1px rgba(255,255,255,.7),inset 0 -1px 2px rgba(8,49,30,.25),0 2px 4px rgba(15,55,32,.13),0 7px 16px -10px rgba(15,55,32,.3);
+}
+.site-header .header-cta[data-astro-cid-6stfpryv]::before,
+.site-header .header-cta[data-astro-cid-6stfpryv]::after{content:none}
+@media(hover:hover){
+ .site-header .header-cta[data-astro-cid-6stfpryv]:hover,
+ #mobile-drawer .drawer__cta:hover{
+  background:#287752;
+  background-image:linear-gradient(180deg,#609d7b 0%,#3a865f 38%,#25724d 72%,#216747 100%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.8),inset 0 -1px 2px rgba(8,49,30,.2),0 4px 8px rgba(15,55,32,.14),0 10px 20px -10px rgba(15,55,32,.34);
+ }
+}
+.site-header .header-cta[data-astro-cid-6stfpryv]:active,
+#mobile-drawer .drawer__cta:active{box-shadow:inset 0 2px 4px rgba(8,49,30,.28),inset 0 -1px 0 rgba(255,255,255,.3)}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){
+ .site-header .header-cta[data-astro-cid-6stfpryv],#mobile-drawer .drawer__cta{background:#216747;background-image:none;box-shadow:none}
+}
+@media(forced-colors:active){
+ .site-header .header-cta[data-astro-cid-6stfpryv],#mobile-drawer .drawer__cta{color:ButtonText;background:ButtonFace;border-color:ButtonText;box-shadow:none}
+}
+
+/* Shared reflection scale: restrained surfaces, local edges, original imagery. */
+[data-jglow]{--jg-rx:240px;--jg-ry:170px;--jg-strength:.13;isolation:isolate}
+[data-jglow]:not([data-field-point]),[data-jglow-body]:not([data-field-point]):not(.product-card__content){position:relative}
+[data-jglow-body]:not(.product-card__content){isolation:isolate}
+[data-jglow] .jg-light,[data-jglow]>.jg-edge{
+ display:block;position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+ opacity:0;transition:opacity 180ms ease;margin:0;
+}
+[data-jglow] .jg-light{
+ z-index:-1;overflow:hidden;
+ background:radial-gradient(ellipse var(--jg-rx) var(--jg-ry) at var(--jg-x,50%) var(--jg-y,50%),rgba(255,255,255,.42),rgba(255,255,255,0) 72%),radial-gradient(ellipse calc(var(--jg-rx)*1.5) calc(var(--jg-ry)*1.5) at var(--jg-x,50%) var(--jg-y,50%),rgba(var(--jg-color),var(--jg-strength)),rgba(var(--jg-color),0) 88%);
+}
+[data-jglow]>.jg-edge{
+ z-index:1;padding:1px;
+ background:radial-gradient(ellipse var(--jg-rx) var(--jg-ry) at var(--jg-x,50%) var(--jg-y,50%),rgba(var(--jg-color),.50),rgba(var(--jg-color),0) 80%);
+ -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+ mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;
+}
+[data-jglow="large"]{--jg-rx:360px;--jg-ry:230px;--jg-strength:.15}
+[data-jglow="row"]{--jg-rx:190px;--jg-ry:85px;--jg-strength:.10}
+[data-jglow="tab"]{--jg-rx:110px;--jg-ry:65px;--jg-strength:.10}
+[data-jglow="pin"]{--jg-rx:34px;--jg-ry:34px;--jg-strength:.08}
+[data-jglow="button"]{--jg-rx:85px;--jg-ry:45px;--jg-strength:0}
+[data-jglow="button"] .jg-light,[data-jglow="pin"] .jg-light{
+ background:radial-gradient(ellipse var(--jg-rx) var(--jg-ry) at var(--jg-x,50%) var(--jg-y,50%),rgba(255,255,255,.22),rgba(255,255,255,0) 80%);
+}
+[data-jglow="button"]>.jg-edge,[data-jglow="pin"]>.jg-edge{
+ background:radial-gradient(ellipse var(--jg-rx) var(--jg-ry) at var(--jg-x,50%) var(--jg-y,50%),rgba(255,255,255,.8),rgba(255,255,255,0) 80%);
+}
+.support-guide details[open]>summary[data-jglow]{box-shadow:inset 0 -1px 0 rgba(90,129,108,.28)}
+@media(hover:hover) and (pointer:fine){
+ [data-jglow-active] .jg-light,[data-jglow-active]>.jg-edge{opacity:1;transition-duration:240ms}
+}
+[data-jglow]:focus-visible{outline:2px solid #568b70;outline-offset:3px}
+[data-jglow="product"]:has(:focus-visible){outline:2px solid #568b70;outline-offset:3px}
+@media(hover:none){[data-jglow] .jg-light,[data-jglow]>.jg-edge{display:none}}
+@media(prefers-reduced-motion:reduce){[data-jglow] .jg-light,[data-jglow]>.jg-edge{transition:none}}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more),(forced-colors:active){
+ [data-jglow] .jg-light,[data-jglow]>.jg-edge{display:none}
+}
