@@ -42,35 +42,48 @@
  padding:.02em .06em .08em;box-shadow:none;border-radius:.12em;
  -webkit-box-decoration-break:clone;box-decoration-break:clone;
 }
-/* White ceramic surface with a pointer-driven pool of light. */
+/* Broad diffuse light and a separate, thin edge reflection on white ceramic. */
 .next-step.next-step--card[data-spotlight]{
+ --consultation-light-in:260ms;--consultation-light-out:180ms;
  position:relative;isolation:isolate;overflow:hidden;
- background:#f7f9f8;border-color:#dce3df;
- transition:border-color 180ms ease,box-shadow 180ms ease;
+ background:#f7f9f8;border-color:#dfe5e2;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 12px 30px -22px rgba(24,47,37,.20);
+ transition:border-color 220ms ease,box-shadow 220ms ease;
 }
 .next-step.next-step--card[data-spotlight] > *{position:relative;z-index:2}
 .next-step.next-step--card[data-spotlight]::after{
  content:"";display:block;position:absolute;inset:0;pointer-events:none;z-index:0;border-radius:inherit;
- background:radial-gradient(ellipse 260px 210px at var(--light-x,50%) var(--light-y,50%),#fff 0%,rgba(255,255,255,.98) 20%,rgba(226,248,238,.75) 43%,rgba(144,217,189,.30) 66%,transparent 100%),radial-gradient(ellipse 410px 300px at var(--light-x,50%) var(--light-y,50%),rgba(184,219,236,.25),transparent 76%);
- opacity:0;transform:none;transition:opacity 140ms ease;
+ background:
+ radial-gradient(ellipse 360px 230px at var(--light-x,50%) var(--light-y,50%),rgba(255,255,255,.72) 0%,rgba(255,255,255,.32) 38%,rgba(255,255,255,0) 78%),
+ radial-gradient(ellipse 620px 390px at var(--light-x,50%) var(--light-y,50%),rgba(119,183,155,.17) 0%,rgba(143,192,170,.10) 38%,rgba(167,204,188,.04) 64%,transparent 88%);
+ opacity:0;transform:none;transition:opacity var(--consultation-light-out) ease;
+}
+/* The mask limits the pointer reflection to the inner 1px rim. */
+.next-step.next-step--card[data-spotlight]::before{
+ content:"";display:block;position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;padding:1px;
+ background:radial-gradient(ellipse 330px 260px at var(--light-x,50%) var(--light-y,50%),rgba(111,163,140,.62),rgba(164,193,179,.22) 48%,transparent 78%);
+ -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+ -webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;
+ opacity:0;transition:opacity var(--consultation-light-out) ease;
 }
 @media(hover:hover) and (pointer:fine){
  .next-step.next-step--card[data-spotlight][data-light-active]{
-  border-color:#a6c8b9;
-  box-shadow:inset 0 1px 0 #fff,0 18px 38px -24px rgba(25,72,53,.28);
+  border-color:#d5e0da;
+  box-shadow:inset 0 1px 0 #fff,0 16px 34px -23px rgba(24,64,44,.25);
  }
- .next-step.next-step--card[data-spotlight][data-light-active]::after{opacity:1}
+ .next-step.next-step--card[data-spotlight][data-light-active]::after,
+ .next-step.next-step--card[data-spotlight][data-light-active]::before{opacity:1;transition-duration:var(--consultation-light-in)}
 }
-.next-step.next-step--card[data-spotlight]:focus-within{border-color:#568b70;box-shadow:inset 0 0 0 1px #568b70}
-@media(hover:none){.next-step.next-step--card[data-spotlight]::after{display:none}}
+.next-step.next-step--card[data-spotlight]:has(:focus-visible){outline:2px solid #568b70;outline-offset:3px}
+@media(hover:none){.next-step.next-step--card[data-spotlight]::before,.next-step.next-step--card[data-spotlight]::after{display:none}}
 @media(prefers-reduced-motion:reduce){
- .next-step.next-step--card[data-spotlight],.next-step.next-step--card[data-spotlight]::after{transition:none}
+ .next-step.next-step--card[data-spotlight],.next-step.next-step--card[data-spotlight]::before,.next-step.next-step--card[data-spotlight]::after{transition:none}
 }
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more),(forced-colors:active){
- .next-step.next-step--card[data-spotlight]::after{display:none}
+ .next-step.next-step--card[data-spotlight]::before,.next-step.next-step--card[data-spotlight]::after{display:none}
  .next-step.next-step--card[data-spotlight][data-light-active]{border-color:currentColor;box-shadow:none}
 }
-@media(forced-colors:active){.next-step.next-step--card[data-spotlight]{background:Canvas;border-color:CanvasText}}
+@media(forced-colors:active){.next-step.next-step--card[data-spotlight]{background:Canvas;border-color:CanvasText;box-shadow:none}}
 
 @media(forced-colors:active){#sense-circle-title mark{color:HighlightText;background:Highlight}}
 
