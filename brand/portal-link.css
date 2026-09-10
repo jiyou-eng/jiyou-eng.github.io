@@ -31,3 +31,7 @@
 @media(prefers-reduced-motion:reduce){.header-portal,.header-portal:hover,.header-portal:active{transform:none;transition:none}}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.header-portal{background-image:none;box-shadow:none;border-color:currentColor}}
 @media(forced-colors:active){.header-portal{color:ButtonText;background:ButtonFace;border-color:ButtonText;box-shadow:none}.header-portal:focus-visible{outline-color:Highlight}}
+
+/* Keep the employee shortcut text-only in both navigation layouts. */
+.header-portal > span[aria-hidden="true"],
+#mobile-drawer a[aria-label="사내 포털 (새 탭)"] > span[aria-hidden="true"]{display:none}
