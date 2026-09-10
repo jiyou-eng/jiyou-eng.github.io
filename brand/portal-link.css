@@ -1,21 +1,21 @@
-/* Employee portal: the same green capsule and material tokens as the contact action. */
+/* Employee portal: navy glass distinguishes internal access from the green contact action. */
 .header-portal{
  box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:6px;
  min-height:44px;padding:0 var(--space-16,16px);border:1px solid transparent;
  border-radius:var(--r-capsule,999px);color:var(--color-accent-ink,#fff);
  font:inherit;font-size:var(--font-small);font-weight:var(--weight-small);
  text-decoration:none;white-space:nowrap;flex-shrink:0;position:relative;isolation:isolate;
- background-color:var(--action-primary,#087344);
+ background-color:var(--navy-800,#243552);
  background-image:var(--material-gloss),var(--material-shade);
  box-shadow:var(--material-edge-filled),var(--shadow-e2);
  transition:transform var(--motion-hover,180ms) var(--ease-hover,ease),
  box-shadow var(--motion-hover,180ms) var(--ease-hover,ease),
  background-color var(--motion-hover,180ms) var(--ease-hover,ease);
 }
-.header-portal:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
+.header-portal:focus-visible{outline:2px solid var(--navy-800,#243552);outline-offset:3px}
 .header-portal span{font-size:14px;line-height:1}
 @media(hover:hover){.header-portal:hover{
- background-color:var(--action-primary-hover,#065c36);
+ background-color:var(--navy-900,#18253e);
  box-shadow:var(--material-edge-filled),var(--shadow-e2-hover);
  transform:translateY(-1px);
 }}
