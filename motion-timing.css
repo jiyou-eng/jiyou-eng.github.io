@@ -1,0 +1,9 @@
+/* Timing authority: motion-settings.js. Geometry may vary by page. */
+#home-title .image-letter,.j-motion-group[data-motion-kind=heading] .j-motion-slot{transition-duration:var(--motion-space)!important}
+#home-title .image-letter__glyph,.j-motion-group .j-motion-glyph{transition-duration:var(--motion-glyphOpacity),var(--motion-glyphTransform)!important}
+#home-title .image-letter__motion,.j-motion-group .j-motion-art{transition-duration:var(--motion-imageOpacity),var(--motion-imageTransform)!important}
+#home-title .image-phrase.is-intro .image-letter.is-intro-ready .image-letter__motion,#home-title .image-phrase.is-intro .image-letter.is-intro-ready .image-letter__glyph{animation-duration:var(--motion-intro)!important;animation-delay:calc(var(--intro-order)*var(--motion-stagger))!important}
+.j-motion-group.j-motion-intro .j-motion-art,.j-motion-group.j-motion-intro .j-motion-glyph,.j-motion-group[data-motion-kind=heading].j-motion-intro .j-motion-slot{animation-duration:var(--motion-intro)!important;animation-delay:calc(var(--j-order)*var(--motion-stagger))!important}
+@media(prefers-reduced-motion:reduce){#home-title .image-letter,#home-title .image-letter__glyph,#home-title .image-letter__motion,.j-motion-group .j-motion-slot,.j-motion-group .j-motion-art,.j-motion-group .j-motion-glyph{animation:none!important;transition:none!important}}
+
+.j-motion-group .j-motion-art img{transition:none!important}

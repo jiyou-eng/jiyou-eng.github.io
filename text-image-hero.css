@@ -1,0 +1,26 @@
+#home-title .image-phrase{display:inline;pointer-events:auto;cursor:default;outline:none;-webkit-tap-highlight-color:transparent;}
+#home-title .image-phrase:focus-visible{outline:1px solid #b9eadb;outline-offset:8px;border-radius:4px;}
+#home-title .image-letter{display:inline-block;position:relative;vertical-align:baseline;isolation:isolate;padding-inline:0;transition:padding .38s cubic-bezier(.22,.8,.25,1);}
+#home-title .image-letter__glyph{display:inline-block;transition:opacity .17s,transform .3s cubic-bezier(.2,.8,.2,1);}
+#home-title .image-letter__motion{position:absolute;left:50%;top:50%;width:1.7em;height:1.7em;pointer-events:none;opacity:0;transform:translate(-50%,-40%) scale(.5) rotate(-9deg);transition:opacity .22s,transform .42s cubic-bezier(.18,.85,.25,1.18);z-index:2;}
+#home-title .image-letter__motion img{display:block;width:100%;height:100%;object-fit:contain;background:transparent;border:0;border-radius:0;box-shadow:none;filter:drop-shadow(0 .05em .07em #0006);transform:translate(var(--letter-x,0px),var(--letter-y,0px)) rotate(var(--letter-r,0deg));}
+#home-title .image-letter.is-image{padding-inline:.12em;z-index:3;}
+#home-title .image-letter.is-image .image-letter__glyph{opacity:0;transform:translateY(3px) scale(.8);}
+#home-title .image-letter.is-image .image-letter__motion{opacity:1;transform:translate(-50%,-53%) scale(1) rotate(0deg);}
+#home-title .image-letter.is-pressed .image-letter__motion{transform:translate(-50%,-50%) scale(.94);}
+@media(max-width:700px){#home-title .image-letter__motion{width:1.5em;height:1.5em;}#home-title .image-letter.is-image{padding-inline:.07em;}}
+@media(prefers-reduced-motion:reduce){#home-title .image-letter,#home-title .image-letter__glyph,#home-title .image-letter__motion{transition:none!important;}#home-title .image-letter.is-image{padding-inline:0;}#home-title .image-letter__motion,#home-title .image-letter.is-image .image-letter__motion{transform:translate(-50%,-50%);}#home-title .image-letter__motion img{transform:none!important;}}
+
+/* A single opening ripple; pointer interaction cancels it immediately. */
+@media(prefers-reduced-motion:no-preference){
+#home-title .image-phrase.is-intro .image-letter.is-intro-ready .image-letter__motion{width:1.35em;height:1.35em;animation:industry-intro-image .86s cubic-bezier(.22,.8,.25,1) both;animation-delay:calc(var(--intro-order)*.11s);}
+#home-title .image-phrase.is-intro .image-letter.is-intro-ready .image-letter__glyph{animation:industry-intro-glyph .86s ease both;animation-delay:calc(var(--intro-order)*.11s);}
+}
+@keyframes industry-intro-image{
+0%{opacity:0;transform:translate(-65%,-25%) scale(.45) rotate(-16deg)}
+22%{opacity:1;transform:translate(-50%,-58%) scale(1.08) rotate(5deg)}
+48%{opacity:1;transform:translate(-50%,-53%) scale(1) rotate(-2deg)}
+68%{opacity:1;transform:translate(-48%,-55%) scale(1.02) rotate(2deg)}
+100%{opacity:0;transform:translate(-35%,-75%) scale(.65) rotate(12deg)}
+}
+@keyframes industry-intro-glyph{0%,100%{opacity:1;transform:none}18%,72%{opacity:0;transform:translateY(3px) scale(.8)}}

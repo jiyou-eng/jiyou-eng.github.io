@@ -1,0 +1,56 @@
+.j-motion-group{--j-intro:300ms;--j-stagger:40ms}
+.j-motion-slot{display:inline-block!important;position:relative;vertical-align:baseline;pointer-events:auto;isolation:isolate;white-space:nowrap}
+.j-motion-glyph{display:inline-block;transition:opacity 100ms,transform 160ms}
+.j-motion-art{position:absolute;left:50%;top:50%;width:1.25em;height:1.4em;pointer-events:none;opacity:0;transform:translate(-50%,-45%) scale(.6) rotate(-8deg);transition:opacity 100ms,transform 180ms cubic-bezier(.16,.8,.3,1.1);z-index:3}
+.j-motion-art img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:contain!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 2px 3px #0002);transform:translate(var(--j-x,0px),var(--j-y,0px)) rotate(var(--j-r,0deg));transition:transform 100ms ease-out}
+.j-motion-active{z-index:4}
+.j-motion-active>.j-motion-glyph{opacity:0;transform:scale(.85)}
+.j-motion-active>.j-motion-art{opacity:1;transform:translate(-50%,-52%) scale(1)}
+.j-motion-group[data-motion-kind=catalog] .j-motion-slot{width:1em;text-align:center}
+.j-motion-group[data-motion-kind=catalog] .j-motion-art{width:1.55em;height:1.6em}
+.j-motion-group[data-motion-kind=detail] .j-motion-art{width:1.35em;height:1.6em}
+.j-motion-intro .j-motion-ready .j-motion-art{animation:j-art-in var(--j-intro) cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--j-order)*var(--j-stagger))}
+.j-motion-intro .j-motion-ready .j-motion-glyph{animation:j-glyph-in var(--j-intro) ease both;animation-delay:calc(var(--j-order)*var(--j-stagger))}
+.j-motion-toggle{position:fixed;right:20px;bottom:18px;z-index:30;border:1px solid #b4bcb7;border-radius:24px;padding:8px 12px;font:500 11px/1.3 system-ui;color:#254c39;background:#fffffff0;cursor:pointer;box-shadow:0 2px 8px #0001}
+.j-motion-toggle[hidden]{display:none}
+.j-motion-toggle:focus-visible{outline:2px solid #26734d;outline-offset:3px}
+@keyframes j-art-in{0%{opacity:0;transform:translate(-60%,-30%) scale(.5) rotate(-12deg)}25%,65%{opacity:1;transform:translate(-50%,-52%) scale(1) rotate(0deg)}100%{opacity:0;transform:translate(-40%,-65%) scale(.7) rotate(8deg)}}
+@keyframes j-glyph-in{0%,100%{opacity:1;transform:none}22%,67%{opacity:0;transform:scale(.8)}}
+@media(max-width:700px){.j-motion-art{width:1.15em;height:1.3em}.j-motion-group[data-motion-kind=catalog] .j-motion-art{width:1.3em;height:1.4em}.j-motion-toggle{bottom:12px;right:12px}}
+@media(prefers-reduced-motion:reduce){.j-motion-art{display:none}.j-motion-glyph{opacity:1!important;transform:none!important;animation:none!important}.j-motion-toggle{display:none}}
+
+/* Product introductions: readable hold, gentler travel; hover remains immediate. */
+.j-motion-intro:is([data-motion-kind=catalog],[data-motion-kind=detail]) .j-motion-art{animation-name:j-product-art-in}
+.j-motion-intro:is([data-motion-kind=catalog],[data-motion-kind=detail]) .j-motion-glyph{animation-name:j-product-glyph-in}
+@keyframes j-product-art-in{0%{opacity:0;transform:translate(-50%,-42%) scale(.82) rotate(-4deg)}24%,76%{opacity:1;transform:translate(-50%,-52%) scale(1) rotate(0deg)}100%{opacity:0;transform:translate(-50%,-57%) scale(.94) rotate(2deg)}}
+@keyframes j-product-glyph-in{0%,100%{opacity:1;transform:none}20%,78%{opacity:0;transform:scale(.92)}}
+
+/* Give each word room to breathe as its image appears. */
+.j-motion-group[data-motion-kind=heading] .j-motion-slot{padding-inline:0;transition:padding 360ms cubic-bezier(.22,.8,.25,1)}
+.j-motion-group[data-motion-kind=heading] .j-motion-active{padding-inline:.12em}
+.j-motion-group[data-motion-kind=heading] .j-motion-art{width:1.35em;height:1.45em;transition:opacity 160ms,transform 320ms cubic-bezier(.2,.8,.25,1.08)}
+.j-motion-group[data-motion-kind=heading] .j-motion-art img{transition:transform 140ms ease-out}
+.j-motion-group[data-motion-kind=heading] .j-motion-glyph{transition:opacity 140ms,transform 240ms}
+.j-motion-group[data-motion-kind=heading].j-motion-intro .j-motion-slot{animation:j-word-space var(--j-intro) cubic-bezier(.22,.8,.25,1) both;animation-delay:calc(var(--j-order)*var(--j-stagger))}
+.j-motion-group[data-motion-kind=heading].j-motion-intro .j-motion-ready .j-motion-art{animation-name:j-heading-art-in}
+.j-motion-group[data-motion-kind=heading].j-motion-intro .j-motion-ready .j-motion-glyph{animation-name:j-product-glyph-in}
+@keyframes j-word-space{0%,100%{padding-inline:0}26%,74%{padding-inline:.12em}}
+@keyframes j-heading-art-in{0%{opacity:0;transform:translate(-54%,-38%) scale(.68) rotate(-7deg)}26%,74%{opacity:1;transform:translate(-50%,-52%) scale(1) rotate(0deg)}100%{opacity:0;transform:translate(-47%,-62%) scale(.82) rotate(5deg)}}
+@media(max-width:700px){.j-motion-group[data-motion-kind=heading] .j-motion-active{padding-inline:.075em}@keyframes j-word-space{0%,100%{padding-inline:0}26%,74%{padding-inline:.075em}}}
+@media(prefers-reduced-motion:reduce){.j-motion-group[data-motion-kind=heading] .j-motion-slot{animation:none!important;transition:none!important;padding-inline:0!important}}
+
+/* Linked real products: native navigation and a stable glyph-sized hit area. */
+.j-motion-product-link{color:inherit!important;text-decoration:none!important;cursor:pointer;border-radius:.1em}
+.j-motion-product-link:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.j-motion-product-link.j-motion-active>.j-motion-art{pointer-events:auto}
+.j-motion-product-link::after{content:attr(data-product-name) " ↗";position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);padding:5px 9px;border-radius:6px;background:#153d2e;color:white;white-space:nowrap;font:500 12px/1.4 system-ui;letter-spacing:normal;opacity:0;pointer-events:none;z-index:8}
+.j-motion-product-link:hover::after,.j-motion-product-link:focus-visible::after{opacity:1}
+/* Detail wording keeps its markup, with the same gentle spacing as the main. */
+.j-motion-group[data-motion-kind=detail] .j-motion-slot{padding-inline:0;transition:padding var(--motion-space) cubic-bezier(.22,.8,.25,1)}
+.j-motion-group[data-motion-kind=detail] .j-motion-active{padding-inline:.12em}
+.j-motion-group[data-motion-kind=detail].j-motion-intro .j-motion-ready{animation:j-word-space var(--motion-intro) cubic-bezier(.22,.8,.25,1) both;animation-delay:calc(var(--j-order)*var(--motion-stagger))}
+@media(max-width:700px){.j-motion-group[data-motion-kind=detail] .j-motion-art{width:1.2em;height:1.35em}.j-motion-group[data-motion-kind=detail] .j-motion-active{padding-inline:.075em}.j-motion-product-link::after{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.j-motion-group[data-motion-kind=detail] .j-motion-slot{animation:none!important;transition:none!important;padding-inline:0!important}}
+
+.j-motion-intro .j-motion-slot:not(.j-motion-ready) :is(.j-motion-art,.j-motion-glyph){animation:none!important}
+.product-card__image-link{display:block;color:inherit;border-radius:inherit}.product-card__image-link:focus-visible{outline:3px solid #318259;outline-offset:4px}

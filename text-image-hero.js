@@ -1,0 +1,28 @@
+(()=>{'use strict';const M=window.JiyouMotionSettings;const phrase=document.querySelector('.image-phrase');if(!phrase)return;
+const letters=[...phrase.querySelectorAll('[data-image-letter]')],reduce=matchMedia('(prefers-reduced-motion:reduce)');let active=null,candidate=null,enterTimer=0,exitTimer=0,tapTimer=0,frame=0,bounds=[],position={x:0,y:0,r:0},target={x:0,y:0,r:0},keyboardIndex=0;
+let autoTimer=0,autoIndex=0,pointerInside=false,keyboardFocused=false,inView=false,introPlayed=false,imagesReady=false;
+function stopAuto(){clearTimeout(autoTimer);autoTimer=0}
+function scheduleAuto(delay=M.resume){stopAuto();if(!imagesReady)return;if(reduce.matches||document.hidden||!inView||pointerInside||keyboardFocused)return;autoTimer=setTimeout(()=>{if(reduce.matches||document.hidden||!inView||pointerInside||keyboardFocused)return;reset();if(!introPlayed){introPlayed=true;phrase.classList.add('is-intro');autoTimer=setTimeout(()=>{reset();scheduleAuto(M.postIntro)},M.intro+M.stagger*(letters.length-1)+M.introTail);return}show(letters[autoIndex++%letters.length]);autoTimer=setTimeout(()=>{reset();scheduleAuto(M.gap)},M.hold)},delay)}
+function release(){reset();scheduleAuto()}
+function measure(){bounds=letters.map(el=>{const r=el.getBoundingClientRect();return{el,x:r.left,y:r.top,w:r.width,h:r.height}})}
+function stopTimers(){clearTimeout(enterTimer);clearTimeout(exitTimer);clearTimeout(tapTimer)}
+function reset(){stopTimers();phrase.classList.remove('is-intro');candidate=null;active=null;letters.forEach(el=>{el.classList.remove('is-image','is-pressed');el.style.removeProperty('--letter-x');el.style.removeProperty('--letter-y');el.style.removeProperty('--letter-r')});cancelAnimationFrame(frame);frame=0;position={x:0,y:0,r:0};target={x:0,y:0,r:0}}
+function animate(){frame=0;if(!active||reduce.matches)return;let delta=0;for(const k of ['x','y','r']){position[k]+=(target[k]-position[k])*M.follow;delta+=Math.abs(target[k]-position[k])}active.style.setProperty('--letter-x',`${position.x.toFixed(2)}px`);active.style.setProperty('--letter-y',`${position.y.toFixed(2)}px`);active.style.setProperty('--letter-r',`${position.r.toFixed(2)}deg`);if(delta>.025)frame=requestAnimationFrame(animate)}
+function show(el){const img=el.querySelector('img');if(!img.complete||!img.naturalWidth)return;if(active===el)return;letters.forEach(e=>{if(e!==el)e.classList.remove('is-image','is-pressed')});active=el;el.classList.add('is-image');position={x:0,y:2,r:-3};if(!frame)frame=requestAnimationFrame(animate)}
+function locate(e){return bounds.find(b=>e.clientX>=b.x-2&&e.clientX<=b.x+b.w+2&&e.clientY>=b.y-8&&e.clientY<=b.y+b.h+8)}
+phrase.addEventListener('pointerenter',e=>{if(e.pointerType==='touch')return;pointerInside=true;stopAuto();reset();measure()});
+phrase.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;clearTimeout(exitTimer);clearTimeout(tapTimer);if(!bounds.length)measure();const b=locate(e);if(!b)return;const dx=Math.max(-1,Math.min(1,(e.clientX-b.x)/b.w*2-1)),dy=Math.max(-1,Math.min(1,(e.clientY-b.y)/b.h*2-1));target={x:dx*5,y:dy*3-1,r:dx*6};if(candidate!==b.el){clearTimeout(enterTimer);candidate=b.el;enterTimer=setTimeout(()=>show(b.el),M.hoverDelay)}else if(active===b.el&&!frame)frame=requestAnimationFrame(animate)});
+phrase.addEventListener('pointerleave',()=>{clearTimeout(enterTimer);candidate=null;pointerInside=false;exitTimer=setTimeout(release,M.leaveDelay)});
+phrase.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch'&&active)active.classList.add('is-pressed')});
+phrase.addEventListener('pointerup',()=>{active?.classList.remove('is-pressed')});phrase.addEventListener('pointercancel',()=>{pointerInside=false;release()});
+phrase.addEventListener('click',e=>{if(e.pointerType==='touch'){stopAuto();reset();measure();const b=locate(e);show(b?.el||letters[keyboardIndex++%letters.length]);tapTimer=setTimeout(release,M.touchHold)}});
+phrase.addEventListener('focus',()=>{if(phrase.matches(':focus-visible')){keyboardFocused=true;stopAuto();reset();measure();show(letters[0])}});phrase.addEventListener('blur',()=>{keyboardFocused=false;release()});
+phrase.addEventListener('keydown',e=>{if(e.key==='Escape'){stopAuto();reset();return}if(['ArrowRight','ArrowLeft','Enter',' '].includes(e.key)){e.preventDefault();keyboardFocused=true;stopAuto();stopTimers();keyboardIndex=(keyboardIndex+(e.key==='ArrowLeft'?-1:1)+letters.length)%letters.length;show(letters[keyboardIndex])}});
+window.addEventListener('resize',()=>{bounds=[];if(!phrase.classList.contains('is-intro')){reset();scheduleAuto(introPlayed?M.postIntro:M.firstEntryDelay)}});window.addEventListener('scroll',()=>{bounds=[]},{passive:true});
+document.addEventListener('visibilitychange',()=>{stopAuto();reset();if(!document.hidden)scheduleAuto(M.postIntro)});
+reduce.addEventListener('change',()=>{stopAuto();release()});window.addEventListener('pagehide',()=>{stopAuto();reset()});
+new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;if(inView)scheduleAuto(introPlayed?M.postIntro:M.firstEntryDelay);else{stopAuto();reset();pointerInside=false}}, {threshold:.5}).observe(phrase);
+letters.forEach((el,i)=>el.style.setProperty('--intro-order',i));
+// Start as soon as an asset can be painted; a slower asset cannot delay the entire introduction.
+letters.forEach(el=>{const img=el.querySelector('img');function ready(){if(!img.naturalWidth)return;el.classList.add('is-intro-ready');imagesReady=true;if(inView&&!introPlayed&&!autoTimer)scheduleAuto(M.firstEntryDelay)}if(img.complete&&img.naturalWidth)ready();else img.decode().then(ready).catch(()=>{})});
+})();
