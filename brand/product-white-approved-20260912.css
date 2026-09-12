@@ -1,0 +1,4 @@
+/* Approved product photography: only tagged images and their frames. */
+img[data-white-product]{object-fit:contain!important;object-position:center!important;background:#fff!important;filter:none!important;mix-blend-mode:normal!important;transform:none!important;padding:clamp(12px,2vw,28px);box-sizing:border-box}
+figure.media-frame:has(img[data-white-product]),[class*="hero__visual"]:has(img[data-white-product]){background:#fff!important;filter:none!important}
+figure.media-frame:has(img[data-white-product])::before,figure.media-frame:has(img[data-white-product])::after,[class*="hero__visual"]:has(img[data-white-product])::before,[class*="hero__visual"]:has(img[data-white-product])::after{display:none!important}
