@@ -1,0 +1,5 @@
+/* Product restoration: bound enlargement, retain readable product scale on phones. */
+.emergency-hero .emergency-hero__visual {width:min(100%, 680px)!important;justify-self:center;padding:20px!important;min-height:0!important;}
+.emergency-hero .emergency-hero__visual .media-frame {--media-ratio:1.5!important;aspect-ratio:1.5!important;}
+.emergency-hero img[data-white-product="emergency-signal-location"] {padding:12px!important;}
+@media(max-width:680px){.emergency-hero .emergency-hero__visual {padding:12px!important;}.emergency-hero .emergency-hero__visual .media-frame {--media-ratio:1.15!important;aspect-ratio:1.15!important;}}
