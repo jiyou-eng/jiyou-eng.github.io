@@ -31,8 +31,17 @@ if(plan.marks){group.querySelectorAll(plan.marks).forEach((mark,i)=>mark.replace
  const positions=new Map(plan.indices.map((i,n)=>[start+i,{index:i,image:plan.images[n]}]));
  const walker=document.createTreeWalker(group,NodeFilter.SHOW_TEXT),nodes=[];let node,offset=0;
  while(node=walker.nextNode()){nodes.push({node,offset});offset+=node.textContent.length}
+ // Keep the original word boundary around each animated glyph. An inline-block
+ // glyph alone creates a new line-break opportunity even with word-break:keep-all.
  for(const {node,offset} of nodes){const str=node.textContent,f=document.createDocumentFragment();let changed=false;
- for(let i=0;i<str.length;i++){const hit=positions.get(offset+i);if(hit){f.append(slot(str[i],hit.index,hit.image));changed=true}else f.append(document.createTextNode(str[i]))}
+ for(const match of str.matchAll(/\s+|[^\s]+/gu)){
+  const word=match[0],start=match.index;
+  const animated=Array.from({length:word.length},(_,i)=>positions.has(offset+start+i)).some(Boolean);
+  if(!animated){f.append(document.createTextNode(word));continue}
+  const wrapper=document.createElement('span');wrapper.className='j-motion-word';
+  for(let i=0;i<word.length;i++){const hit=positions.get(offset+start+i);wrapper.append(hit?slot(word[i],hit.index,hit.image):document.createTextNode(word[i]))}
+  f.append(wrapper);changed=true;
+ }
  if(changed)node.replaceWith(f)}
 }
 if(!slots.length)return;
