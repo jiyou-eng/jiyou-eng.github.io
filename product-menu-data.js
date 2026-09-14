@@ -223,7 +223,7 @@ export default [
           },
           {
             "slug": "ir3-flame-detector",
-            "name": "3파장 적외선 불꽃감지기",
+            "name": "스마트 화재감지기",
             "href": "/products/ir3-flame-detector"
           }
         ]
