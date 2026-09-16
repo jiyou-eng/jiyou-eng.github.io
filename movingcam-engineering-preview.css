@@ -1,0 +1,14 @@
+/* Local support-structure comparison; shared site typography and spacing. */
+#movingcam-engineering{display:block}
+#movingcam-engineering>div:first-child{margin-bottom:var(--space-40);max-width:none}
+#movingcam-engineering .movingcam-label{font-size:var(--font-label);font-weight:var(--weight-label);color:var(--brand-green);margin:0 0 var(--space-16)}
+#movingcam-engineering h2{font-size:var(--font-h2);font-weight:var(--weight-h2);line-height:var(--line-h2);margin:0}
+#movingcam-engineering>dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-32);margin:0}
+#movingcam-engineering>dl>div{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-20);padding:var(--space-32);border:0;border-top:2px solid var(--brand-green);background:var(--surface-canvas);border-radius:0 0 var(--radius-panel) var(--radius-panel);min-width:0}
+#movingcam-engineering dt{margin:0;font-size:var(--font-h4);font-weight:var(--weight-h4);line-height:var(--line-h4)}
+#movingcam-engineering .engineering-model{display:block;font-size:var(--font-h3);font-weight:var(--weight-h3);line-height:var(--line-h3);color:var(--brand-green);margin-bottom:var(--space-16)}
+#movingcam-engineering .engineering-use{display:block;color:var(--text-primary)}
+#movingcam-engineering dd{margin:0;font-size:var(--font-body);font-weight:var(--weight-body);line-height:var(--line-body);color:var(--text-secondary)}
+#movingcam-engineering>.movingcam-condition{margin:var(--space-24) 0 0;padding:var(--space-16) 0 0;border-top:1px solid var(--line-subtle);font-size:var(--font-label);font-weight:var(--weight-body);line-height:var(--line-body);color:var(--text-secondary)}
+@media(max-width:1000px){#movingcam-engineering>dl{gap:var(--space-16)}#movingcam-engineering>dl>div{padding:var(--space-24)}}
+@media(max-width:700px){#movingcam-engineering>dl{grid-template-columns:1fr;gap:var(--space-16)}#movingcam-engineering>dl>div{grid-row:auto;grid-template-rows:auto;gap:var(--space-16)}#movingcam-engineering>div:first-child{margin-bottom:var(--space-24)}#movingcam-engineering .engineering-model{margin-bottom:var(--space-8)}}
