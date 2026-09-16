@@ -1,1 +1,1 @@
-import"./magnetic.D2Ek6UfV.js";
+import"./magnetic.D2Ek6UfV.js";import "/tablet-touch-compat.js?v=1";
