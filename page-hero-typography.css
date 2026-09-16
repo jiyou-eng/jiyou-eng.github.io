@@ -1,0 +1,7 @@
+/* Match the IBM typeface used by the home hero and MOVING RECORD. */
+#main-content :is(#solutions-title, #catalog-title, #support-title, #contact-title),
+#main-content :is(#solutions-title, #catalog-title, #support-title, #contact-title) em,
+#main-content :is(.solutions-cover .hub-label, .catalog-cover .catalog-label, .support-hero .support-label, .contact-cover .contact-label) {
+  font-family: "Jiyou Record", "Pretendard Variable", sans-serif;
+  font-weight: 600;
+}
