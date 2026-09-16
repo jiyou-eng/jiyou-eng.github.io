@@ -28,3 +28,18 @@
 @media(max-width:700px){.tbm-essentials .tbm-essentials__grid{grid-template-columns:1fr}.tbm-essentials .tbm-essentials__grid article,.tbm-essentials .tbm-translation{padding:var(--space-24)}.tbm-essentials .tbm-translation__body{flex-direction:column;align-items:flex-start;gap:var(--space-12)}}
 #tbm-essentials .tbm-essentials__grid article{padding:var(--space-32);border:1px solid var(--line-subtle)}
 @media(max-width:700px){#tbm-essentials .tbm-essentials__grid article{padding:var(--space-24)}}
+/* Separate the process from the configuration choices. */
+#tbm-delivery-flow .tbm-flow__steps{gap:0;border-radius:var(--radius-panel);overflow:hidden;background:var(--paper)}
+#tbm-delivery-flow .tbm-flow__steps li{border:0;border-right:1px solid var(--line-subtle);border-radius:0;min-height:0;height:auto;padding:var(--space-24);gap:var(--space-16)}
+#tbm-delivery-flow .tbm-flow__steps li:last-child{border-right:0}
+#tbm-delivery-flow .tbm-flow__steps h3{margin-bottom:var(--space-12)}
+#tbm-essentials .tbm-essentials__grid{gap:var(--space-24);margin-top:var(--space-24)}
+#tbm-essentials .tbm-essentials__grid article{padding:var(--space-24);min-height:0;border:1px solid var(--line-subtle);border-top:3px solid var(--brand-green);border-radius:var(--radius-control)}
+#tbm-essentials .tbm-essentials__grid article>span{display:none}
+#tbm-essentials .tbm-essentials__grid article>h3{margin:0 0 var(--space-12)}
+#tbm-essentials .tbm-config-cta{display:flex;justify-content:space-between;align-items:center;gap:var(--space-24);margin-top:var(--space-24)}
+#tbm-essentials .tbm-config-cta p{font-size:var(--font-body);color:var(--text-secondary);margin:0}
+#tbm-essentials .tbm-config-cta a{display:inline-flex;align-items:center;gap:var(--space-16);padding:var(--space-16) var(--space-24);background:var(--brand-green);color:var(--paper);border-radius:var(--radius-control);text-decoration:none;white-space:nowrap;font-weight:var(--weight-label)}
+#tbm-essentials .tbm-config-cta a:focus-visible{outline:3px solid var(--brand-green);outline-offset:4px}
+#tbm-essentials .tbm-translation{background:none;border:0;border-top:1px solid var(--line-subtle);border-radius:0;padding:var(--space-24) 0 0;margin-top:var(--space-32)}
+@media(max-width:700px){#tbm-delivery-flow .tbm-flow__steps li{border-right:0;border-bottom:1px solid var(--line-subtle)}#tbm-essentials .tbm-config-cta{flex-direction:column;align-items:stretch}#tbm-essentials .tbm-config-cta a{justify-content:center}}
