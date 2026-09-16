@@ -179,6 +179,8 @@
 .site-header .site-header__inner .header-cta,
 .site-header .site-header__inner .header-portal{
  box-sizing:border-box;
+ font-family:"Jiyou Record","Pretendard Variable",sans-serif;
+ font-weight:600;
  min-width:56px;
  min-height:36px;
  height:36px;
