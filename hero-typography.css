@@ -1,0 +1,6 @@
+/* Use the same IBM typeface as the MOVING RECORD heading. */
+#main-content .home-hero #home-title,
+#main-content .home-hero .home-hero__eyebrow {
+  font-family: "Jiyou Record", "Pretendard Variable", sans-serif;
+  font-weight: 600;
+}
