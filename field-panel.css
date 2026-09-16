@@ -3,17 +3,17 @@
 #core-products .field-heading{padding-top:0}
 #core-products .field-detail{margin-top:var(--space-24)}
 #core-products .field-heading h3{margin:0}
-body[data-spacing=c] #core-products .field-panel{grid-template-areas:'media copy';grid-template-rows:1fr;align-items:center;background:var(--surface-canvas);border-radius:var(--radius-panel);padding:var(--space-24);gap:var(--space-40)}
-body[data-spacing=c] #core-products .field-copy-group{grid-area:copy;padding:var(--space-16) var(--space-16) var(--space-16) 0}
-body[data-spacing=c] #core-products .field-heading{margin-bottom:var(--space-32)}
-body[data-spacing=c] #core-products .field-detail{margin:0}
-body[data-spacing=c] #core-products .field-media{box-shadow:none}
-body[data-spacing=c] #core-products .field-product-link:hover{background:var(--paper)}
-@media(max-width:899px){body[data-spacing=c] #core-products .field-panel{grid-template-columns:1fr;grid-template-areas:"media" "copy";gap:var(--space-24);padding:var(--space-16)}#core-products .field-copy-group{padding:0!important}}
-/* C: keep the image and its caption inside one rounded media surface. */
-body[data-spacing=c] #core-products .field-media{border-radius:var(--radius-media);overflow:hidden;background:var(--paper)}
-body[data-spacing=c] #core-products .field-media-note{border-radius:0 0 var(--radius-media) var(--radius-media);background:var(--paper)}
+body[data-spacing=b] #core-products .field-panel{grid-template-areas:'media copy';grid-template-rows:1fr;align-items:center;background:transparent;padding:0;gap:var(--space-48)}
+body[data-spacing=b] #core-products .field-copy-group{grid-area:copy;padding-block:var(--space-24)}
+body[data-spacing=b] #core-products .field-heading{margin-bottom:var(--space-32)}
+body[data-spacing=b] #core-products .field-detail{margin:0}
+body[data-spacing=b] #core-products .field-media{box-shadow:none}
+body[data-spacing=b] #core-products .field-product-link:hover{background:var(--surface-canvas)}
+@media(max-width:899px){body[data-spacing=b] #core-products .field-panel{grid-template-columns:1fr;grid-template-areas:"media" "copy";gap:var(--space-24);padding:0}#core-products .field-copy-group{padding:0!important}}
+/* B: keep the image and its caption inside one rounded media surface. */
+body[data-spacing=b] #core-products .field-media{border-radius:var(--radius-media);overflow:hidden;background:var(--paper)}
+body[data-spacing=b] #core-products .field-media-note{border-radius:0 0 var(--radius-media) var(--radius-media);background:var(--paper)}
 /* Blend the image edge into the caption without affecting the numbered controls. */
-body[data-spacing=c] #core-products .field-visual .media-frame{box-shadow:none;border:0;border-radius:0;background:var(--paper);mask-image:linear-gradient(to bottom,#000 0%,#000 89%,transparent 100%)}
-body[data-spacing=c] #core-products .field-visual{background:var(--paper)}
-body[data-spacing=c] #core-products .field-media-note{border-top:0;box-shadow:none;background:var(--paper);padding-top:var(--space-8);padding-bottom:var(--space-16)}
+body[data-spacing=b] #core-products .field-visual .media-frame{box-shadow:none;border:0;border-radius:0;background:var(--paper);mask-image:linear-gradient(to bottom,#000 0%,#000 89%,transparent 100%)}
+body[data-spacing=b] #core-products .field-visual{background:var(--paper)}
+body[data-spacing=b] #core-products .field-media-note{border-top:0;box-shadow:none;background:var(--paper);padding-top:var(--space-8);padding-bottom:var(--space-16)}
