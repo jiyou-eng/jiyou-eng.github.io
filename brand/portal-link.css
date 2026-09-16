@@ -174,3 +174,15 @@
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more),(forced-colors:active){
  [data-jglow] .jg-light,[data-jglow]>.jg-edge{display:none}
 }
+
+/* Give the two header actions more breathing room within the navigation bar. */
+.site-header .site-header__inner .header-cta,
+.site-header .site-header__inner .header-portal{
+ box-sizing:border-box;
+ min-width:56px;
+ min-height:36px;
+ height:36px;
+ padding:0 12px;
+ font-size:13px;
+ line-height:1.2;
+}
