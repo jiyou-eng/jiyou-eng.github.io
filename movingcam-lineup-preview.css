@@ -1,0 +1,16 @@
+/* Local comparison layout using shared site tokens. */
+#mobile-cctv-lineup>header{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-48);align-items:end;margin-bottom:var(--space-48)}
+#mobile-cctv-lineup>header h2{font-size:var(--font-h2);font-weight:var(--weight-h2);margin:0;line-height:var(--line-h2)}
+#mobile-cctv-lineup>header p{font-size:var(--font-body);font-weight:var(--weight-body);line-height:var(--line-body);margin:0;color:var(--text-secondary)}
+#mobile-cctv-lineup .mobile-cctv-lineup__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--space-32);row-gap:var(--space-20)}
+#mobile-cctv-lineup .mobile-cctv-lineup__grid>article{display:grid;grid-row:span 5;grid-template-rows:subgrid;gap:var(--space-20);min-width:0;padding:var(--space-24);border:1px solid var(--line-subtle);border-radius:var(--radius-panel);background:var(--paper)}
+#mobile-cctv-lineup .mobile-cctv-lineup__grid h3{font-size:var(--font-h3);font-weight:var(--weight-h3);line-height:var(--line-h3);margin:0}
+#mobile-cctv-lineup .movingcam-variants{margin:0;gap:var(--space-8);align-content:start}
+#mobile-cctv-lineup .movingcam-variants li{font-size:var(--font-label);padding:var(--space-8) var(--space-12);border-radius:var(--radius-input)}
+#mobile-cctv-lineup .movingcam-promise{font-size:var(--font-h4);font-weight:var(--weight-h4);line-height:var(--line-h4);margin:0;color:var(--text-primary)}
+#mobile-cctv-lineup .media-frame{height:360px;aspect-ratio:auto;min-height:0;margin:0;box-shadow:none;background:var(--paper);border-radius:0}
+#mobile-cctv-lineup .media-frame picture{display:block;width:100%;height:100%}
+#mobile-cctv-lineup .media-frame img{width:100%;height:100%;object-fit:contain;object-position:center bottom!important}
+#mobile-cctv-lineup .movingcam-detail{font-size:var(--font-body);font-weight:var(--weight-body);line-height:var(--line-body);margin:0;padding-top:var(--space-16);border-top:1px solid var(--line-subtle);color:var(--text-secondary)}
+@media(max-width:1100px) and (min-width:701px){#mobile-cctv-lineup .mobile-cctv-lineup__grid{gap:var(--space-16)}#mobile-cctv-lineup .mobile-cctv-lineup__grid>article{padding:var(--space-16)}#mobile-cctv-lineup .media-frame{height:280px}}
+@media(max-width:700px){#mobile-cctv-lineup>header{grid-template-columns:1fr;gap:var(--space-16);margin-bottom:var(--space-32)}#mobile-cctv-lineup .mobile-cctv-lineup__grid{grid-template-columns:1fr;gap:var(--space-24)}#mobile-cctv-lineup .mobile-cctv-lineup__grid>article{grid-row:auto;grid-template-rows:auto;gap:var(--space-16)}#mobile-cctv-lineup .media-frame{height:320px}}
