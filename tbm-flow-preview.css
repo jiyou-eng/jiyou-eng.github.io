@@ -12,3 +12,19 @@
 #tbm-delivery-flow #tbm-flow-title{max-width:none}
 #tbm-delivery-flow .tbm-flow__steps{background:transparent}
 #tbm-delivery-flow .tbm-flow__steps li{height:auto;min-block-size:0}
+.tbm-essentials .tbm-essentials__header{display:block;margin-bottom:var(--space-32)}
+.tbm-essentials #tbm-essentials-title{max-width:none;margin:0}
+.tbm-essentials .tbm-kicker{margin:0 0 var(--space-16);font-size:var(--font-label)}
+.tbm-essentials .tbm-essentials__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-24);border:0;margin-top:var(--space-32);background:none}
+.tbm-essentials .tbm-essentials__grid article{padding:var(--space-32);border:1px solid var(--line-subtle);border-radius:var(--radius-panel);background:var(--paper);display:flex;flex-direction:column;align-items:flex-start}
+.tbm-essentials .tbm-essentials__grid article>span{font-size:var(--font-label);margin:0 0 var(--space-24);color:var(--brand-green)}
+.tbm-essentials .tbm-essentials__grid article>h3{font-size:var(--font-h4);line-height:var(--line-h4);margin:0 0 var(--space-16)}
+.tbm-essentials .tbm-essentials__grid article>p{font-size:var(--font-body);line-height:var(--line-body);font-weight:var(--weight-body);margin:0}
+.tbm-essentials .tbm-translation{display:block;padding:var(--space-24) var(--space-32);margin-top:var(--space-24);border:1px solid var(--line-subtle);border-radius:var(--radius-panel);background:var(--paper)}
+.tbm-essentials .tbm-translation>p{font-size:var(--font-label);margin:0 0 var(--space-12);color:var(--brand-green)}
+.tbm-essentials .tbm-translation__body{display:flex;justify-content:space-between;align-items:center;gap:var(--space-24)}
+.tbm-essentials .tbm-translation__body strong{font-size:var(--font-body);font-weight:var(--weight-body);line-height:var(--line-body)}
+.tbm-essentials .tbm-translation__link{margin:0;flex-shrink:0;min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:700px){.tbm-essentials .tbm-essentials__grid{grid-template-columns:1fr}.tbm-essentials .tbm-essentials__grid article,.tbm-essentials .tbm-translation{padding:var(--space-24)}.tbm-essentials .tbm-translation__body{flex-direction:column;align-items:flex-start;gap:var(--space-12)}}
+#tbm-essentials .tbm-essentials__grid article{padding:var(--space-32);border:1px solid var(--line-subtle)}
+@media(max-width:700px){#tbm-essentials .tbm-essentials__grid article{padding:var(--space-24)}}
