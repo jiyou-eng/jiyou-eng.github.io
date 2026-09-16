@@ -1,0 +1,28 @@
+/* Local safety dashboard page: shared typography and clear information groups. */
+#safety-preview #story h2,#safety-preview #highlights h2{font-size:var(--font-h2);font-weight:var(--weight-h2);line-height:var(--line-h2);max-width:none;text-wrap:balance}
+#safety-preview #story p{font-weight:var(--weight-body);line-height:var(--line-body)}
+#safety-preview #story .safety-box-kicker{font-size:var(--font-label);font-weight:var(--weight-label);margin-bottom:var(--space-16)}
+#safety-preview .safety-box-hero{gap:var(--space-48)}
+#safety-preview .safety-box-hero h1{font-size:var(--font-h1);line-height:1.2;letter-spacing:-.03em}
+#safety-preview .safety-box-hero__lead{font-size:var(--font-body-large);font-weight:var(--weight-body);margin-top:var(--space-24)}
+#safety-preview .media-frame{border-radius:var(--radius-panel);overflow:hidden;box-shadow:none}
+#safety-preview .safety-box-question__inner,#safety-preview .safety-box-control__header,#safety-preview .safety-box-decision{gap:var(--space-24) var(--space-48);align-items:center}
+#safety-preview .safety-box-question__inner>p:last-child,#safety-preview .safety-box-control__header>p,#safety-preview .safety-box-decision>p{font-size:var(--font-body);font-weight:var(--weight-body);line-height:var(--line-body)}
+#safety-preview .safety-box-screen{background:var(--surface-ink);border-radius:var(--radius-panel);box-shadow:none;padding:var(--space-32);margin-top:var(--space-40)}
+#safety-preview .safety-box-screen__steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-16);padding-bottom:var(--space-24);margin-bottom:var(--space-24);border-bottom:1px solid color-mix(in srgb,var(--paper) 20%,transparent)}
+#safety-preview .safety-box-screen__steps li{gap:var(--space-12);font-size:var(--font-body)}
+#safety-preview .safety-box-screen__steps span{color:var(--brand-mint);font-size:var(--font-label)}
+#safety-preview .safety-box-screen__workspace{grid-template-columns:minmax(0,.7fr) minmax(0,1.1fr) minmax(0,1fr);gap:var(--space-20)}
+#safety-preview .safety-box-sites,#safety-preview .safety-box-overview,#safety-preview .safety-box-panels section,#safety-preview .safety-box-cctv{box-shadow:none;padding:var(--space-24);border-radius:var(--radius-control)}
+#safety-preview .safety-box-panels{gap:var(--space-16)}
+#safety-preview .safety-box-screen h3{font-size:var(--font-h4);line-height:var(--line-h4);margin-top:var(--space-12)}
+#safety-preview .safety-box-overview dl{gap:var(--space-16);margin-top:var(--space-24)}
+#safety-preview .safety-box-overview dl div{gap:var(--space-8);padding-top:var(--space-16)}
+#safety-preview .safety-box-overview dd,#safety-preview .safety-box-screen__note{font-weight:var(--weight-body)}
+#safety-preview .safety-box-screen__note{margin-top:var(--space-20);font-size:var(--font-label)}
+#safety-preview .safety-box-key{box-shadow:none}
+#safety-preview .safety-box-decision{grid-template-columns:1fr 1fr}
+#safety-preview #highlights h3{font-size:var(--font-h4);line-height:var(--line-h4)}
+#safety-preview #highlights p{font-weight:var(--weight-body);line-height:var(--line-body)}
+@media(max-width:1000px){#safety-preview .safety-box-screen__workspace{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);grid-template-areas:'sites overview' 'panels panels' 'cctv cctv'}#safety-preview .safety-box-panels{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){#safety-preview .safety-box-question__inner,#safety-preview .safety-box-control__header,#safety-preview .safety-box-decision{grid-template-columns:1fr;gap:var(--space-24)}#safety-preview .safety-box-screen{padding:var(--space-16)}#safety-preview .safety-box-screen__steps{grid-template-columns:repeat(2,1fr)}#safety-preview .safety-box-screen__workspace{grid-template-columns:minmax(0,1fr);grid-template-areas:'sites' 'overview' 'panels' 'cctv'}#safety-preview .safety-box-panels{grid-template-columns:1fr}#safety-preview .safety-box-sites,#safety-preview .safety-box-overview,#safety-preview .safety-box-panels section,#safety-preview .safety-box-cctv{padding:var(--space-20)}#safety-preview .safety-box-control__header>p{margin:0}}
