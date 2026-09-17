@@ -1,21 +1,29 @@
-/* Product-wide local presentation baseline. Page-specific refinements load after this file. */
-body[data-product-design] .dedicated-product-page #story h2{font-size:var(--font-h2);font-weight:var(--weight-h2);line-height:var(--line-h2);text-wrap:balance;letter-spacing:-.025em}
-body[data-product-design] .dedicated-product-page #story h3{font-size:var(--font-h3);font-weight:var(--weight-h3);line-height:var(--line-h3);text-wrap:pretty}
-body[data-product-design] .dedicated-product-page #story p{font-weight:var(--weight-body);line-height:var(--line-body)}
-body[data-product-design] .dedicated-product-page #story header>p:first-child,body[data-product-design] .dedicated-product-page #story [class$='__copy']>p:first-child{font-size:var(--font-label);font-weight:var(--weight-label)}
-body[data-product-design] .dedicated-product-page #story header>p:last-child:not(:first-child){font-size:var(--font-body);line-height:var(--line-body)}
-body[data-product-design] .dedicated-product-page #story [class$='__lead'],body[data-product-design] .dedicated-product-page #story [class$='__support']{font-size:var(--font-body-large);font-weight:var(--weight-body);line-height:var(--line-body)}
-body[data-product-design] .dedicated-product-page #story header{column-gap:var(--space-40);row-gap:var(--space-16)}
-body[data-product-design] .dedicated-product-page #story header h2{margin-top:0}
-body[data-product-design] .dedicated-product-page #story .media-frame{border-radius:var(--radius-panel);overflow:hidden;box-shadow:none}
-body[data-product-design] .dedicated-product-page #story .product-art-hero h1{line-height:1.2;letter-spacing:-.03em}
-body[data-product-design] .dedicated-product-page #story dl dd{font-weight:var(--weight-body);line-height:var(--line-body)}
-body[data-product-design] .dedicated-product-page .product-highlights__head h2{font-size:var(--font-h2);line-height:var(--line-h2);font-weight:var(--weight-h2)}
-body[data-product-design] .dedicated-product-page .product-highlights__head{margin-bottom:var(--space-32)}
-body[data-product-design] .dedicated-product-page .product-highlights__card{border-radius:var(--radius-panel);box-shadow:none}
-body[data-product-design] .dedicated-product-page .product-highlights__card h3{font-size:var(--font-h4);line-height:var(--line-h4);font-weight:var(--weight-h4)}
-body[data-product-design] .dedicated-product-page .product-highlights__card p{font-weight:var(--weight-body);line-height:var(--line-body)}
-body[data-product-design] .dedicated-product-page .product-highlights__eyebrow{font-size:var(--font-label);font-weight:var(--weight-label)}
-body[data-product-design] .dedicated-product-page .next-step h2{font-size:var(--font-h2);line-height:var(--line-h2)}
-body[data-product-design] .dedicated-product-page .next-step p{font-weight:var(--weight-body);line-height:var(--line-body)}
-@media(max-width:700px){body[data-product-design] .dedicated-product-page #story header{grid-template-columns:minmax(0,1fr);gap:var(--space-16)}body[data-product-design] .dedicated-product-page #story h2{overflow-wrap:break-word}body[data-product-design] .dedicated-product-page #story header>p{max-width:100%}body[data-product-design] .dedicated-product-page .product-highlights__card{min-width:0}}
+/* Product-wide typography baseline.
+   This file loads after page bundles, so shared rules intentionally keep low specificity.
+   Product-specific selectors can override these defaults through normal cascade specificity. */
+body[data-product-design] .dedicated-product-page{
+  --weight-product-body:500;
+  --weight-product-lead:520;
+  --weight-product-emphasis:600;
+  font-weight:var(--weight-product-body);
+}
+.dedicated-product-page :where(#story h2){font-size:var(--font-h2);font-weight:var(--weight-h2);line-height:var(--line-h2);text-wrap:balance;letter-spacing:-.025em}
+.dedicated-product-page :where(#story h3){font-size:var(--font-h3);font-weight:var(--weight-h3);line-height:var(--line-h3);text-wrap:pretty}
+.dedicated-product-page :where(#story p){line-height:var(--line-body)}
+.dedicated-product-page :where(#story header>p:first-child,#story [class$='__copy']>p:first-child){font-size:var(--font-label);font-weight:var(--weight-label)}
+.dedicated-product-page :where(#story header>p:last-child:not(:first-child)){font-size:var(--font-body);line-height:var(--line-body)}
+.dedicated-product-page :where(#story [class$='__lead'],#story [class$='__support']){font-size:var(--font-body-large);font-weight:var(--weight-product-lead);line-height:var(--line-body)}
+.dedicated-product-page :where(#story header){column-gap:var(--space-40);row-gap:var(--space-16)}
+.dedicated-product-page :where(#story header h2){margin-top:0}
+.dedicated-product-page :where(#story .media-frame){border-radius:var(--radius-panel);overflow:hidden;box-shadow:none}
+.dedicated-product-page :where(#story .product-art-hero h1){line-height:1.2;letter-spacing:-.03em}
+.dedicated-product-page :where(#story dl dd){line-height:var(--line-body)}
+.dedicated-product-page :where(.product-highlights__head h2){font-size:var(--font-h2);line-height:var(--line-h2);font-weight:var(--weight-h2)}
+.dedicated-product-page :where(.product-highlights__head){margin-bottom:var(--space-32)}
+.dedicated-product-page :where(.product-highlights__card){border-radius:var(--radius-panel);box-shadow:none}
+.dedicated-product-page :where(.product-highlights__card h3){font-size:var(--font-h4);line-height:var(--line-h4);font-weight:var(--weight-h4)}
+.dedicated-product-page :where(.product-highlights__card p){line-height:var(--line-body)}
+.dedicated-product-page :where(.product-highlights__eyebrow){font-size:var(--font-label);font-weight:var(--weight-label)}
+.dedicated-product-page :where(.next-step h2){font-size:var(--font-h2);line-height:var(--line-h2)}
+.dedicated-product-page :where(.next-step p){line-height:var(--line-body)}
+@media(max-width:700px){.dedicated-product-page :where(#story header){grid-template-columns:minmax(0,1fr);gap:var(--space-16)}.dedicated-product-page :where(#story h2){overflow-wrap:break-word}.dedicated-product-page :where(#story header>p){max-width:100%}.dedicated-product-page :where(.product-highlights__card){min-width:0}}
