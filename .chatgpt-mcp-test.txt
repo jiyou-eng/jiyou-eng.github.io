@@ -1,0 +1,3 @@
+ChatGPT chat session VPS MCP write test
+Repository: jiyou-eng/jiyou-eng.github.io
+Purpose: temporary non-production verification
