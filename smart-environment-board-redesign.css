@@ -1,0 +1,144 @@
+/* Smart environment board redesign — scoped to one product page. */
+body[data-product-design] .dedicated-product-page[data-product-page="smart-environment-board"]{
+  --env-surface:#f3f7f4;
+  --env-surface-strong:#eaf2ed;
+  --env-line:color-mix(in srgb,var(--brand-green) 18%,var(--line-subtle));
+}
+
+/* Hero: result first, product second. */
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero{
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(3rem,7vw,7.5rem);
+  padding-block:clamp(4rem,8vw,7.5rem) clamp(5rem,9vw,8.5rem);
+}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero__copy{max-width:44rem}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero__product{
+  display:inline-flex;align-items:center;min-height:2rem;padding:.35rem .75rem;margin-bottom:1.4rem;
+  border:1px solid var(--env-line);border-radius:999px;background:var(--env-surface);font-size:.82rem;letter-spacing:.01em;
+}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero h1{
+  max-width:11ch;font-size:clamp(3.25rem,6vw,6.2rem);letter-spacing:-.055em;line-height:1.02;
+}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero__lead{
+  max-width:35rem;margin-top:1.75rem;color:var(--text-secondary);font-size:clamp(1.25rem,1.65vw,1.55rem);font-weight:520;line-height:1.62;
+}
+.environment-board-hero__proofs{
+  display:flex;flex-wrap:wrap;gap:.65rem 1.4rem;margin:2rem 0 0;padding:1.25rem 0 0;border-top:1px solid var(--line-subtle);list-style:none;
+}
+.environment-board-hero__proofs li{position:relative;padding-left:1rem;color:var(--text-primary);font-size:.94rem;font-weight:600;line-height:1.45}
+.environment-board-hero__proofs li:before{content:"";position:absolute;left:0;top:.52em;width:.38rem;height:.38rem;border-radius:50%;background:var(--brand-green)}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero__jump{margin-top:2rem;font-size:.95rem}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero__visual .media-frame{
+  border:1px solid var(--env-line);border-radius:clamp(1.25rem,2vw,2rem);background:linear-gradient(145deg,var(--paper),var(--env-surface));box-shadow:var(--shadow-e2);overflow:hidden;
+}
+
+/* Problem: stronger editorial rhythm, less visual noise. */
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-problem{padding-block:clamp(5.5rem,10vw,9rem)}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-problem__grid{grid-template-columns:minmax(0,.9fr) minmax(24rem,1.1fr);gap:clamp(3rem,8vw,8rem)}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-problem h2{max-width:11ch;line-height:1.12}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-problem__copy>p:last-child{max-width:39rem;font-size:clamp(1.05rem,1.35vw,1.25rem);line-height:1.8}
+
+/* Operating flow: one continuous system, not oversized presentation cards. */
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-link--redesign{
+  padding-block:clamp(5.5rem,10vw,9rem);background:var(--env-surface);
+}
+.environment-link--redesign .environment-link__header--redesign{
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(20rem,1.1fr);align-items:end;gap:clamp(2.5rem,7vw,7rem);
+}
+.environment-link--redesign .environment-eyebrow{margin:0 0 1rem;color:var(--brand-green);font-size:.92rem;font-weight:650;line-height:1.4;letter-spacing:.01em}
+.environment-link--redesign .environment-link__header h2{max-width:14ch;font-size:clamp(2.35rem,4.2vw,4.4rem);line-height:1.12;letter-spacing:-.035em}
+.environment-link--redesign .environment-link__summary{max-width:39rem;margin:0;color:var(--text-secondary);font-size:clamp(1.05rem,1.35vw,1.23rem);font-weight:500;line-height:1.8}
+.environment-flow{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:clamp(3.5rem,7vw,6rem) 0 0;padding:0;
+  border:1px solid var(--env-line);border-radius:1.5rem;background:var(--paper);box-shadow:var(--shadow-e1);overflow:hidden;list-style:none;
+}
+.environment-flow li{display:flex;flex-direction:column;min-width:0;min-height:15rem;padding:clamp(1.5rem,2.4vw,2.25rem);border-right:1px solid var(--env-line)}
+.environment-flow li:last-child{border-right:0}
+.environment-flow__step{display:block;color:var(--brand-green);font-size:.88rem;font-weight:700;letter-spacing:.03em}
+.environment-flow li>div{margin-top:auto;padding-top:2.75rem}
+.environment-flow__kicker{margin:0 0 .7rem;color:var(--brand-green);font-size:.86rem;font-weight:650;line-height:1.4}
+.environment-flow h3{margin:0;color:var(--text-primary);font-size:clamp(1.25rem,1.65vw,1.55rem);font-weight:680;letter-spacing:-.025em;line-height:1.36}
+.environment-flow__desc{margin:.8rem 0 0;color:var(--text-secondary);font-size:.9rem;font-weight:500;line-height:1.65}
+.environment-flow__response{background:color-mix(in srgb,var(--brand-green) 8%,var(--paper))}
+
+/* Explicitly a connection diagram: no fabricated measurements or fake dashboard values. */
+.environment-ops{
+  display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(2.5rem,6vw,6rem);align-items:stretch;
+  margin-top:clamp(1.5rem,3vw,2.5rem);padding:clamp(1.75rem,3.5vw,3.25rem);border:1px solid var(--env-line);border-radius:1.75rem;background:var(--paper);
+}
+.environment-ops__copy{align-self:center;max-width:31rem}
+.environment-ops__copy h3{margin:0;color:var(--text-primary);font-size:clamp(2rem,3.15vw,3.25rem);font-weight:700;letter-spacing:-.035em;line-height:1.15}
+.environment-ops__copy>p:not(.environment-eyebrow){margin:1.35rem 0 0;color:var(--text-secondary);font-size:1rem;font-weight:500;line-height:1.75}
+.environment-ops__benefits{display:grid;gap:.65rem;margin:1.6rem 0 0;padding:0;list-style:none}
+.environment-ops__benefits li{position:relative;padding-left:1.25rem;color:var(--text-primary);font-size:.92rem;font-weight:600;line-height:1.5}
+.environment-ops__benefits li:before{content:"";position:absolute;left:0;top:.55em;width:.45rem;height:.45rem;border-radius:50%;background:var(--brand-green)}
+.environment-ops__diagram{align-self:stretch;padding:clamp(1.25rem,2vw,1.75rem);border-radius:1.4rem;background:#0c261b;color:var(--paper);box-shadow:var(--shadow-e2-dark)}
+.environment-ops__diagram-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-bottom:1rem;border-bottom:1px solid color-mix(in srgb,var(--paper) 14%,transparent);font-size:.78rem;font-weight:650;letter-spacing:.02em}
+.environment-ops__status{display:inline-flex;align-items:center;gap:.45rem;color:color-mix(in srgb,var(--paper) 78%,transparent)}
+.environment-ops__status i{width:.48rem;height:.48rem;border-radius:50%;background:#69d79b;box-shadow:0 0 0 .25rem color-mix(in srgb,#69d79b 12%,transparent)}
+.environment-ops__signals{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:1rem;align-items:center;padding:1.3rem 0}
+.environment-ops__signals>div{min-width:0;padding:1rem;border:1px solid color-mix(in srgb,var(--paper) 13%,transparent);border-radius:1rem;background:color-mix(in srgb,var(--paper) 5%,transparent)}
+.environment-ops__signals span,.environment-ops__actions span{display:block;color:#8cd8ad;font-size:.72rem;font-weight:650;letter-spacing:.02em}
+.environment-ops__signals strong{display:block;margin-top:.5rem;color:var(--paper);font-size:.94rem;font-weight:650;line-height:1.45}
+.environment-ops__signals>b{color:#8cd8ad;font-size:1.2rem;font-weight:500}
+.environment-ops__actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+.environment-ops__actions article{min-width:0;padding:1rem;border:1px solid color-mix(in srgb,var(--paper) 12%,transparent);border-radius:1rem;background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.environment-ops__actions .environment-ops__action--accent{border-color:color-mix(in srgb,#69d79b 38%,transparent);background:color-mix(in srgb,#69d79b 10%,transparent)}
+.environment-ops__actions strong{display:block;margin-top:.45rem;color:var(--paper);font-size:.93rem;font-weight:650;line-height:1.45}
+.environment-ops__actions small{display:block;margin-top:.55rem;color:color-mix(in srgb,var(--paper) 68%,transparent);font-size:.72rem;font-weight:500;line-height:1.55}
+
+/* Roles become outcomes: aligned rows instead of generic card tiles. */
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes{
+  display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(3rem,8vw,8rem);padding-block:clamp(5.5rem,10vw,9rem);
+}
+.environment-outcomes__header{align-self:start}
+.environment-outcomes__header .environment-eyebrow{margin:0 0 1rem;color:var(--brand-green);font-size:.92rem;font-weight:650}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__header h2{margin:0;font-size:clamp(2.25rem,3.8vw,4rem);line-height:1.13;letter-spacing:-.035em}
+.environment-outcomes__header>p:last-child{max-width:29rem;margin:1.4rem 0 0;color:var(--text-secondary);font-size:1rem;font-weight:500;line-height:1.75}
+.environment-outcomes__grid{border-top:1px solid var(--line-subtle)}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__grid article{
+  display:grid;grid-template-columns:minmax(8.5rem,.72fr) minmax(12rem,1fr) minmax(0,1.35fr);gap:clamp(1rem,2.3vw,2rem);align-items:start;
+  padding:clamp(1.6rem,3vw,2.35rem) 0;border-bottom:1px solid var(--line-subtle);
+}
+.environment-outcomes__grid span{color:var(--brand-green);font-size:.86rem;font-weight:650;line-height:1.5}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__grid h3{margin:0;color:var(--text-primary);font-size:clamp(1.15rem,1.5vw,1.4rem);font-weight:680;line-height:1.45;letter-spacing:-.02em}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__grid p{margin:0;color:var(--text-secondary);font-size:.95rem;font-weight:500;line-height:1.7}
+
+/* Highlights become a quiet continuation instead of another competing hero. */
+.dedicated-product-page[data-product-page="smart-environment-board"] .product-highlights{background:var(--paper)}
+.dedicated-product-page[data-product-page="smart-environment-board"] .product-highlights__head{max-width:52rem;margin-bottom:clamp(2.5rem,5vw,4.5rem)}
+
+@media (max-width:1180px){
+  .dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero,
+  .dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-problem__grid,
+  .environment-link--redesign .environment-link__header--redesign,
+  .environment-ops,
+  .dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes{grid-template-columns:minmax(0,1fr)}
+  .dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero h1{max-width:12ch;font-size:clamp(3rem,8vw,5.4rem);letter-spacing:-.045em}
+  .environment-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .environment-flow li:nth-child(2){border-right:0}
+  .environment-flow li:nth-child(-n+2){border-bottom:1px solid var(--env-line)}
+  .environment-outcomes__header{max-width:44rem}
+}
+
+@media (max-width:760px){
+  .dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero{padding-block:3.25rem 5rem;gap:2.75rem}
+  .dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero h1{font-size:clamp(2.75rem,14vw,4.2rem);line-height:1.06}
+  .dedicated-product-page[data-product-page="smart-environment-board"] .environment-board-hero__lead{font-size:1.12rem;line-height:1.7}
+  .environment-board-hero__proofs{display:grid;gap:.65rem}
+  .environment-link--redesign .environment-link__header h2{font-size:clamp(2.15rem,10vw,3.2rem)}
+  .environment-flow{grid-template-columns:minmax(0,1fr);border-radius:1.2rem}
+  .environment-flow li{min-height:0;border-right:0;border-bottom:1px solid var(--env-line);padding:1.45rem}
+  .environment-flow li:last-child{border-bottom:0}
+  .environment-flow li>div{margin-top:1.5rem;padding-top:0}
+  .environment-ops{padding:1.25rem;border-radius:1.25rem}
+  .environment-ops__copy h3{font-size:clamp(2rem,9vw,2.75rem)}
+  .environment-ops__signals{grid-template-columns:minmax(0,1fr)}
+  .environment-ops__signals>b{transform:rotate(90deg);justify-self:center}
+  .environment-ops__actions{grid-template-columns:minmax(0,1fr)}
+  .dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__grid article{grid-template-columns:minmax(0,1fr);gap:.55rem;padding:1.5rem 0}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .dedicated-product-page[data-product-page="smart-environment-board"] *{scroll-behavior:auto}
+}
