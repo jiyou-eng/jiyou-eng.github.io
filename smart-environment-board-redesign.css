@@ -46,7 +46,7 @@ body[data-product-design] .dedicated-product-page[data-product-page="smart-envir
   display:grid;grid-template-columns:minmax(0,.9fr) minmax(20rem,1.1fr);align-items:end;gap:clamp(2.5rem,7vw,7rem);
 }
 .environment-link--redesign .environment-eyebrow{margin:0 0 1rem;color:var(--brand-green);font-size:.92rem;font-weight:650;line-height:1.4;letter-spacing:.01em}
-.environment-link--redesign .environment-link__header h2{max-width:14ch;font-size:clamp(2.35rem,4.2vw,4.4rem);line-height:1.12;letter-spacing:-.035em}
+.environment-link--redesign .environment-link__header h2{max-width:12em;font-size:clamp(2.35rem,4.2vw,4.4rem);line-height:1.12;letter-spacing:-.035em}
 .environment-link--redesign .environment-link__summary{max-width:39rem;margin:0;color:var(--text-secondary);font-size:clamp(1.05rem,1.35vw,1.23rem);font-weight:500;line-height:1.8}
 .environment-flow{
   display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:clamp(3.5rem,7vw,6rem) 0 0;padding:0;
@@ -57,8 +57,8 @@ body[data-product-design] .dedicated-product-page[data-product-page="smart-envir
 .environment-flow__step{display:block;color:var(--brand-green);font-size:.88rem;font-weight:700;letter-spacing:.03em}
 .environment-flow li>div{margin-top:auto;padding-top:2.75rem}
 .environment-flow__kicker{margin:0 0 .7rem;color:var(--brand-green);font-size:.86rem;font-weight:650;line-height:1.4}
-.environment-flow h3{margin:0;color:var(--text-primary);font-size:clamp(1.25rem,1.65vw,1.55rem);font-weight:680;letter-spacing:-.025em;line-height:1.36}
-.environment-flow__desc{margin:.8rem 0 0;color:var(--text-secondary);font-size:.9rem;font-weight:500;line-height:1.65}
+.environment-flow h3{margin:0;color:var(--text-primary);font-size:clamp(1.25rem,1.65vw,1.55rem);font-weight:680;letter-spacing:-.025em;line-height:1.36;word-break:keep-all;overflow-wrap:break-word}
+.environment-flow__desc{margin:.8rem 0 0;color:var(--text-secondary);font-size:.9rem;font-weight:500;line-height:1.65;word-break:keep-all;overflow-wrap:break-word}
 .environment-flow__response{background:color-mix(in srgb,var(--brand-green) 8%,var(--paper))}
 
 /* Explicitly a connection diagram: no fabricated measurements or fake dashboard values. */
@@ -101,8 +101,8 @@ body[data-product-design] .dedicated-product-page[data-product-page="smart-envir
   padding:clamp(1.6rem,3vw,2.35rem) 0;border-bottom:1px solid var(--line-subtle);
 }
 .environment-outcomes__grid span{color:var(--brand-green);font-size:.86rem;font-weight:650;line-height:1.5}
-.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__grid h3{margin:0;color:var(--text-primary);font-size:clamp(1.15rem,1.5vw,1.4rem);font-weight:680;line-height:1.45;letter-spacing:-.02em}
-.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__grid p{margin:0;color:var(--text-secondary);font-size:.95rem;font-weight:500;line-height:1.7}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__grid h3{margin:0;color:var(--text-primary);font-size:clamp(1.15rem,1.5vw,1.4rem);font-weight:680;line-height:1.45;letter-spacing:-.02em;word-break:keep-all;overflow-wrap:break-word}
+.dedicated-product-page[data-product-page="smart-environment-board"] .environment-outcomes__grid p{margin:0;color:var(--text-secondary);font-size:.95rem;font-weight:500;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
 
 /* Highlights become a quiet continuation instead of another competing hero. */
 .dedicated-product-page[data-product-page="smart-environment-board"] .product-highlights{background:var(--paper)}
