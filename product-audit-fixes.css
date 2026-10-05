@@ -19,20 +19,6 @@
   :root:not(#jy-fix) .access-gate-rhythm__header>* {order:0}
 }
 
-/* D1. 제품 페이지 제목 글자 연출: 글자는 그대로 두고, 그림은 글자 옆(첫 줄은 위, 마지막 줄은 아래)에
-   작게 떠올랐다 사라지게. 위치는 site-image-motion.js의 data-j-place로 정한다.
-   (이전에는 그림이 글자 자리를 덮어 "같은 안전 ■내를"처럼 글자가 빠져 보였다) */
-:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot .j-motion-glyph {opacity:1!important;transform:none!important;animation:none!important}
-:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot {padding-inline:0!important;animation:none!important}
-:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot .j-motion-art {top:auto;bottom:calc(100% - .12em);width:.8em;height:.88em;transform:translate(-50%,25%) scale(.6)}
-:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot.j-motion-active>.j-motion-art {transform:translate(-50%,0) scale(1)}
-:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot[data-j-place=below] .j-motion-art {bottom:auto;top:calc(100% - .08em);transform:translate(-50%,-25%) scale(.6)}
-:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot[data-j-place=below].j-motion-active>.j-motion-art {transform:translate(-50%,0) scale(1)}
-:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail].j-motion-intro .j-motion-ready .j-motion-art {animation-name:jy-art-above}
-:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail].j-motion-intro .j-motion-ready[data-j-place=below] .j-motion-art {animation-name:jy-art-below}
-@keyframes jy-art-above{0%{opacity:0;transform:translate(-50%,30%) scale(.6)}24%,76%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-10%) scale(.9)}}
-@keyframes jy-art-below{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}24%,76%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,10%) scale(.9)}}
-
 /* C2. "모션 일시정지" 고정 버튼: 휴대폰에서는 글자를 숨기고 작은 아이콘 버튼으로(본문 가림 최소화).
    글자는 그대로 남아 있어 화면 낭독기는 "모션 일시정지/모션 재생"을 읽는다. */
 @media (max-width:700px){
