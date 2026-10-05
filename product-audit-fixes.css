@@ -76,3 +76,14 @@
 
 /* mobile-cctv: 강점 카드의 세로 제품 사진이 가로 칸에 꽉 채워져 위아래가 잘리던 문제 */
 :root:not(#jy-fix) .dedicated-product-page:has(#mobile-cctv-lineup-title) .product-highlights__card--photo img {object-fit:contain;background:#fff}
+
+/* ai-equipment-collision: 경고 섹션 제목이 351px 폭 상한·넓은 줄 간격으로 4줄로 쪼개지던 문제(태블릿·PC) */
+@media (width>=821px){
+  :root:not(#jy-fix) .warning-state__header h2{max-width:none;line-height:1.28}
+}
+
+/* lte-anemometer: 높이 도식의 눈금 상자가 빈 회색 사각형처럼 보이던 문제 → 배경을 빼고 눈금 옆 세로선만 */
+:root:not(#jy-fix) .wind-section__shaft{background:none;border-left:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+
+/* iot-small-tower-crane: 표시기 사진(원본 1280px)을 1120px로 키워 글자가 뭉개지던 자리 → 표시 폭 상한 */
+:root:not(#jy-fix) .same-reading__media{max-width:720px;margin-inline:auto}
