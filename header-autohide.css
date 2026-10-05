@@ -1,0 +1,14 @@
+/* 스크롤 중 헤더 숨김(header-autohide.js와 함께 사용). 무스마(musma.net) 방식:
+   아래로 스크롤하면 위로 숨고, 위로 스크롤하면 바로 다시 나타난다. */
+html[data-header] .site-header{transition:transform .3s cubic-bezier(0,0,.2,1),background-color .3s cubic-bezier(0,0,.2,1),box-shadow .3s cubic-bezier(0,0,.2,1)}
+html[data-header=hidden] .site-header{transform:translateY(-100%)}
+/* 중간에서 다시 나타날 때는 배경을 조금 더 불투명하게, 옅은 그림자로 내용과 구분 */
+html[data-header=shown] .site-header{background-color:color-mix(in oklch,white 88%,transparent);box-shadow:0 6px 18px -12px rgb(15 23 42/.35)}
+
+/* 헤더 높이(--header-height)를 기준으로 붙는 요소들이 헤더와 함께 움직이게 */
+html[data-header] :is(.chapter-nav,.company-chapters,.filter-bar,.contact-preparation h2,.broadcast-moment__statement,.narrative-section,.product-narrative-page__anchor,#solution-axes-title,[data-scrolly-stage]){transition:top .3s cubic-bezier(0,0,.2,1)}
+
+@media (prefers-reduced-motion:reduce){
+  html[data-header] .site-header,
+  html[data-header] :is(.chapter-nav,.company-chapters,.filter-bar,.contact-preparation h2,.broadcast-moment__statement,.narrative-section,.product-narrative-page__anchor,#solution-axes-title,[data-scrolly-stage]){transition:none}
+}
