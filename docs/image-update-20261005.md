@@ -509,3 +509,46 @@
 | worker-attendance-card | [화면](image-update-20261005/r4/worker-attendance-card-390.png) | [화면](image-update-20261005/r4/worker-attendance-card-820.png) | [화면](image-update-20261005/r4/worker-attendance-card-1440.png) |
 
 검증 자료: [브라우저 측정](image-update-20261005/r4/browser-checks.json), [변경 범위·히어로 보존·해시 검사](image-update-20261005/r4/validation.json), [출처·전체 프롬프트·해시 원장](image-update-20261005/r4/manifest.json).
+
+## 5차 — 마무리 사진 2장 및 3D 인물 통일
+
+4개 페이지의 지정 이미지 4장을 교체했습니다. 기존 이미지와 히어로의 JIYOU 로고는 그대로 보존했습니다. HTML은 해당 자리의 이미지 경로만 변경했으며, 구조·CSS·JS·문구·alt·크기·비율·sizes·U+2060은 변경하지 않았습니다. 기존 이미지 덮어쓰기, git commit·push는 하지 않았고 건너뛴 대상은 없습니다.
+
+사진은 기존 크기 세트(WebP 480/768/1280px, 센서 480/768/1254px)를 그대로 유지했습니다. 3D 그림은 640×480/1280×960px이며 새 r5 파일명으로 저장했습니다. 생성 PNG 원본은 커밋 제외 경로 `output/image-r5/`에 보관했습니다.
+
+### 교체 내역
+
+| 페이지 | 위치 | 이전 → 새 파일 | 출처 | 프롬프트 요약 | 생성 원본 | 원본 SHA256 |
+|---|---|---|---|---|---|---|
+| iot-small-tower-crane | same-reading 아래 큰 사진 | `media/derived/product-iot-small-tower-crane-reference-white-20260912-1280.webp` → [iot-small-tower-crane-office-jiyou-r5-20261005-1280.webp](../media/derived/iot-small-tower-crane-office-jiyou-r5-20261005-1280.webp) | image_gen 내장 도구, 실사풍 장면 신규 생성 | 현장사무실 전체, 창밖 소형 타워크레인, 관리자 모니터를 보는 담당자의 뒷모습. 화면은 글자 없는 카드·막대. | `output/image-r5/crane.png` | `fbabf67fd8b175b42e1686520df8b8c5276ca8500ee75bd40570ad27f305a224` |
+| tilt-acceleration-sensor | tilt-signal | `media/derived/product-tilt-acceleration-sensor-reference-white-20260912-1254.webp` → [tilt-acceleration-sensor-site-jiyou-r5-20261005-1254.webp](../media/derived/tilt-acceleration-sensor-site-jiyou-r5-20261005-1254.webp) | image_gen 내장 도구, 기존 히어로 센서 사진 참조 생성 | 실제 검은 함체·흰 라벨 3칸 센서를 흙막이벽 철골에 설치, 옆 기둥 사이렌과 스마트폰 그래프·경고 아이콘 확인. 얼굴은 뒤쪽. | `output/image-r5/tilt.png` | `7d512f76171ed44cb87305fad92e0ae2fb842233f4a9c32bf4e9f5b6ff4c4ed7` |
+| ai-broadcast | highlights 첫 3D 그림 | `img/hl/hl-ai-broadcast-0-1280-jiyou-r4-20261005.webp` → [hl-ai-broadcast-0-1280-jiyou-r5-20261005.webp](../img/hl/hl-ai-broadcast-0-1280-jiyou-r5-20261005.webp) | image_gen 내장 도구, 기존 r4 그림 편집 및 hl-mobile-bodycam 인물 스타일 참조 | 작업자의 머리·손을 매끈한 흰 마네킹형으로 변경. 스피커·스마트폰·음파·구도·색감 유지. | `output/image-r5/ai.png` | `979177167bcba226d167dca129b3db68edc4151d6514de08fcb48d8d6844da03` |
+| worker-attendance-card | highlights 첫 3D 그림 | `img/hl/hl-worker-attendance-card-0-1280-jiyou-r4-20261005.webp` → [hl-worker-attendance-card-0-1280-jiyou-r5-20261005.webp](../img/hl/hl-worker-attendance-card-0-1280-jiyou-r5-20261005.webp) | image_gen 내장 도구, 기존 r4 그림 편집 및 hl-mobile-bodycam 인물 스타일 참조 | 서 있는 작업자와 앉은 담당자를 얼굴·머리카락 없는 흰 마네킹형으로 통일. 책상·모니터·게이트·구도·색감 유지. | `output/image-r5/worker.png` | `9650b7b5b297ad06ba7faee6ca8aee3d24dfb1bb037e6d651ded07709bb06082` |
+
+### 파생 파일 기록
+
+| 페이지 | 이전 → 새 파일 | 크기 | SHA256 |
+|---|---|---|---|
+| iot-small-tower-crane | `media/derived/product-iot-small-tower-crane-reference-white-20260912-480.webp` → [iot-small-tower-crane-office-jiyou-r5-20261005-480.webp](../media/derived/iot-small-tower-crane-office-jiyou-r5-20261005-480.webp) | 480×289 | `0d29f48bb4ddc7df067f3efde471b3cdb96dbc78927736285f5278cca761dc6c` |
+| iot-small-tower-crane | `media/derived/product-iot-small-tower-crane-reference-white-20260912-768.webp` → [iot-small-tower-crane-office-jiyou-r5-20261005-768.webp](../media/derived/iot-small-tower-crane-office-jiyou-r5-20261005-768.webp) | 768×463 | `79055cb47007982ca74b093dd4c0e95e05c5873bfd5146d2fc45cf46f9fd8572` |
+| iot-small-tower-crane | `media/derived/product-iot-small-tower-crane-reference-white-20260912-1280.webp` → [iot-small-tower-crane-office-jiyou-r5-20261005-1280.webp](../media/derived/iot-small-tower-crane-office-jiyou-r5-20261005-1280.webp) | 1280×772 | `1925136943edfa6c70eab6f024c2942f05163b2bb060345307e540a575b42959` |
+| tilt-acceleration-sensor | `media/derived/product-tilt-acceleration-sensor-reference-white-20260912-480.webp` → [tilt-acceleration-sensor-site-jiyou-r5-20261005-480.webp](../media/derived/tilt-acceleration-sensor-site-jiyou-r5-20261005-480.webp) | 480×480 | `7d31b7c1e7efaed425a9b9ec4f648f655c554c234bc397afb0dfb1a0f68bf1e4` |
+| tilt-acceleration-sensor | `media/derived/product-tilt-acceleration-sensor-reference-white-20260912-768.webp` → [tilt-acceleration-sensor-site-jiyou-r5-20261005-768.webp](../media/derived/tilt-acceleration-sensor-site-jiyou-r5-20261005-768.webp) | 768×768 | `e47d3a8e052591c7542c35c178f881ab9a4930b111e30eaaedabc84862f96d4d` |
+| tilt-acceleration-sensor | `media/derived/product-tilt-acceleration-sensor-reference-white-20260912-1254.webp` → [tilt-acceleration-sensor-site-jiyou-r5-20261005-1254.webp](../media/derived/tilt-acceleration-sensor-site-jiyou-r5-20261005-1254.webp) | 1254×1254 | `5b7bd6eb502f3b5bb2900b9d9f990e8b62779d93030125cfc3dd9332aa588cef` |
+| ai-broadcast | `img/hl/hl-ai-broadcast-0-640-jiyou-r4-20261005.webp` → [hl-ai-broadcast-0-640-jiyou-r5-20261005.webp](../img/hl/hl-ai-broadcast-0-640-jiyou-r5-20261005.webp) | 640×480 | `1f8f8e2d9c5fb98c0fcecfb0f4680ab2a22396ae53823e38de79ac77379f56b5` |
+| ai-broadcast | `img/hl/hl-ai-broadcast-0-1280-jiyou-r4-20261005.webp` → [hl-ai-broadcast-0-1280-jiyou-r5-20261005.webp](../img/hl/hl-ai-broadcast-0-1280-jiyou-r5-20261005.webp) | 1280×960 | `813dbfada4bfab1c5a263fef153e57c30f9d32192cb680a79136c5529c2330fa` |
+| worker-attendance-card | `img/hl/hl-worker-attendance-card-0-640-jiyou-r4-20261005.webp` → [hl-worker-attendance-card-0-640-jiyou-r5-20261005.webp](../img/hl/hl-worker-attendance-card-0-640-jiyou-r5-20261005.webp) | 640×480 | `f87ed58130d72ed12c78c32229c5c3bd97e1cc43db32deb380394e629aef4b18` |
+| worker-attendance-card | `img/hl/hl-worker-attendance-card-0-1280-jiyou-r4-20261005.webp` → [hl-worker-attendance-card-0-1280-jiyou-r5-20261005.webp](../img/hl/hl-worker-attendance-card-0-1280-jiyou-r5-20261005.webp) | 1280×960 | `49c231cbf12d669d30c14d11354ba32b84498c6a490be0239e31741d5daa13a3` |
+
+### 화면 확인
+
+작업 폴더에서 `python3 -m http.server 8773`을 실행하고 visible Computer Use로 4개 페이지 × 390·820·1440px, 총 12개 조합을 확인했습니다. 이미지 로딩, 주요 피사체가 잘리지 않는 표시, 이미지 경계 및 문서 가로 넘침을 확인하고 캡처했습니다. 기존 contain 표시와 여백을 유지했습니다. 임시 뷰포트는 검증 후 복원했습니다.
+
+| 페이지 | 390px | 820px | 1440px |
+|---|---|---|---|
+| iot-small-tower-crane | [화면](image-update-20261005/r5/iot-small-tower-crane-390.png) | [화면](image-update-20261005/r5/iot-small-tower-crane-820.png) | [화면](image-update-20261005/r5/iot-small-tower-crane-1440.png) |
+| tilt-acceleration-sensor | [화면](image-update-20261005/r5/tilt-acceleration-sensor-390.png) | [화면](image-update-20261005/r5/tilt-acceleration-sensor-820.png) | [화면](image-update-20261005/r5/tilt-acceleration-sensor-1440.png) |
+| ai-broadcast | [화면](image-update-20261005/r5/ai-broadcast-390.png) | [화면](image-update-20261005/r5/ai-broadcast-820.png) | [화면](image-update-20261005/r5/ai-broadcast-1440.png) |
+| worker-attendance-card | [화면](image-update-20261005/r5/worker-attendance-card-390.png) | [화면](image-update-20261005/r5/worker-attendance-card-820.png) | [화면](image-update-20261005/r5/worker-attendance-card-1440.png) |
+
+검증 자료: [브라우저 측정](image-update-20261005/r5/browser-checks.json), [변경 범위 검사](image-update-20261005/r5/validation.json), [출처·전체 프롬프트·해시 원장](image-update-20261005/r5/manifest.json).
