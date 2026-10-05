@@ -46,6 +46,10 @@ if(plan.marks){group.querySelectorAll(plan.marks).forEach((mark,i)=>mark.replace
 }
 if(!slots.length)return;
 group.normalize();const heading=group.closest('h1,h2');if(heading)heading.setAttribute('aria-label',heading.textContent);
+// Product pages keep the letter visible and float the image beside it: above on the
+// first line, below on the last line, so it never covers the neighbouring line.
+function place(){const box=(heading||group).getBoundingClientRect(),line=parseFloat(getComputedStyle(heading||group).lineHeight)||0;slots.forEach(el=>{const r=el.getBoundingClientRect();el.dataset.jPlace=(r.top-box.top>line*.5&&box.bottom-r.bottom<line*.5)?'below':'above'})}
+place();let placeTimer=0;window.addEventListener('resize',()=>{clearTimeout(placeTimer);placeTimer=setTimeout(place,150)});
 group.classList.add('j-motion-group');group.dataset.motionKind=plan.kind||'heading';group.style.setProperty('--j-intro',M.intro+'ms');group.style.setProperty('--j-stagger',M.stagger+'ms');
 let generation=0;
 let timer=0,hoverTimer=0,leaveTimer=0,raf=0,active=null,inView=false,ready=false,entered=false,hovered=false,focused=false,index=0,variant=0,position={x:0,y:0,r:0},target={x:0,y:0,r:0};

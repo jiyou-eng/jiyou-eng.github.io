@@ -1,1 +1,78 @@
 /* 2026-10-05 제품 페이지 전수조사 후속 수정. 제품 페이지 묶음 CSS 뒤에 불러온다. */
+
+/* C1. PC에서 본문이 제목보다 먼저 읽히던 섹션: 머리글·제목을 왼쪽(먼저)으로 되돌린다.
+   원래 규칙이 넓은 화면에서만 order를 맞바꾸므로 같은 조건에서 되돌린다. */
+@media (width>=821px){
+  :root:not(#jy-fix) .expansion-flow .expansion-pair {grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+  :root:not(#jy-fix) .expansion-flow .expansion-pair>* {order:0}
+  :root:not(#jy-fix) .anemometer-handover__strip {grid-template-columns:minmax(0,1fr) minmax(0,.65fr)}
+  :root:not(#jy-fix) .anemometer-handover__strip>* {order:0}
+}
+@media (width>=981px){
+  :root:not(#jy-fix) .crane-flow__header {grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+  :root:not(#jy-fix) .crane-flow__header>* {order:0}
+  :root:not(#jy-fix) .broadcast-flow__header {grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}
+  :root:not(#jy-fix) .broadcast-flow__header>* {order:0}
+}
+@media (width>=1101px){
+  :root:not(#jy-fix) .access-gate-rhythm__header {grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+  :root:not(#jy-fix) .access-gate-rhythm__header>* {order:0}
+}
+
+/* D1. 제품 페이지 제목 글자 연출: 글자는 그대로 두고, 그림은 글자 옆(첫 줄은 위, 마지막 줄은 아래)에
+   작게 떠올랐다 사라지게. 위치는 site-image-motion.js의 data-j-place로 정한다.
+   (이전에는 그림이 글자 자리를 덮어 "같은 안전 ■내를"처럼 글자가 빠져 보였다) */
+:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot .j-motion-glyph {opacity:1!important;transform:none!important;animation:none!important}
+:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot {padding-inline:0!important;animation:none!important}
+:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot .j-motion-art {top:auto;bottom:calc(100% - .12em);width:.8em;height:.88em;transform:translate(-50%,25%) scale(.6)}
+:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot.j-motion-active>.j-motion-art {transform:translate(-50%,0) scale(1)}
+:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot[data-j-place=below] .j-motion-art {bottom:auto;top:calc(100% - .08em);transform:translate(-50%,-25%) scale(.6)}
+:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail] .j-motion-slot[data-j-place=below].j-motion-active>.j-motion-art {transform:translate(-50%,0) scale(1)}
+:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail].j-motion-intro .j-motion-ready .j-motion-art {animation-name:jy-art-above}
+:root:not(#jy-fix) .j-motion-group[data-motion-kind=detail].j-motion-intro .j-motion-ready[data-j-place=below] .j-motion-art {animation-name:jy-art-below}
+@keyframes jy-art-above{0%{opacity:0;transform:translate(-50%,30%) scale(.6)}24%,76%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-10%) scale(.9)}}
+@keyframes jy-art-below{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}24%,76%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,10%) scale(.9)}}
+
+/* C2. "모션 일시정지" 고정 버튼: 휴대폰에서는 글자를 숨기고 작은 아이콘 버튼으로(본문 가림 최소화).
+   글자는 그대로 남아 있어 화면 낭독기는 "모션 일시정지/모션 재생"을 읽는다. */
+@media (max-width:700px){
+  :root:not(#jy-fix) .j-motion-toggle {width:34px;height:34px;padding:0;border-radius:50%;font-size:0!important;line-height:0;display:grid;place-items:center;opacity:.82}
+  :root:not(#jy-fix) .j-motion-toggle[hidden] {display:none}
+  :root:not(#jy-fix) .j-motion-toggle::before {content:"❚❚";font:600 10px/1 system-ui;letter-spacing:-1px;color:#254c39}
+  :root:not(#jy-fix) .j-motion-toggle[aria-pressed="true"]::before {content:"▶";letter-spacing:0;font-size:11px}
+}
+
+/* C3. 어두운 히어로 카드 바로 아래가 어두운 섹션인 페이지: 사이 48px 흰 띠 제거 */
+:root:not(#jy-fix) .site-cms-hero,:root:not(#jy-fix) .network-hero {margin-bottom:0}
+
+/* C5. editorial·orbit 배치의 제목 앞 속 빈 동그라미가 빠진 아이콘처럼 보임 → 다른 배치와 같은 짧은 색 막대로 */
+:root:not(#jy-fix) .dedicated-product-page[data-product-page]:is([data-art-layout=editorial],[data-art-layout=orbit]) .product-art-hero h1:before {border:0;border-radius:var(--radius-capsule);background:var(--art-accent);width:var(--space-48);height:4px;box-shadow:none}
+
+/* C6. 작은 머리글과 큰 제목이 같은 격자 안에 있어 칸 간격(100~115px)이 위아래에도 걸리던 곳: 위아래 간격만 줄임 */
+:root:not(#jy-fix) .dedicated-product-page header:has(>p:first-child+h2) {row-gap:.5rem}
+
+/* C7. 늦게 불러오는 사진(data-src)이 주소를 받기 전에 깨진 아이콘·대체 글이 보이던 문제: 자리는 두고 숨김 */
+:root:not(#jy-fix) img[data-src]:not([src]),:root:not(#jy-fix) img[data-srcset]:not([srcset]):not([src]) {visibility:hidden}
+
+/* 히어로 제품 사진이 첫 화면을 넘치던 페이지: 사진 높이에 상한 */
+:root:not(#jy-fix) .alcohol-hero .media-frame img {max-height:min(58vh,560px)}
+@media (width>=981px){
+  :root:not(#jy-fix) .hook-camera-hero .media-frame img,:root:not(#jy-fix) .environment-board-hero .media-frame img {max-height:min(58vh,520px)}
+}
+
+/* tbm-solution 휴대폰: "교육자료에서 작업 전 확인까지" 단계가 계단처럼 어긋나던 문제(가로 배치 → 번호|내용 2칸) */
+@media (width<=820px){
+  :root:not(#jy-fix) .tbm-flow__steps>li {display:grid;grid-template-columns:40px minmax(0,1fr);align-items:start;justify-content:stretch}
+  :root:not(#jy-fix) .tbm-flow__steps>li>* {margin-left:0;justify-self:start}
+}
+
+/* safety-box 태블릿: 좁은 현장 목록 칸에서 한 단어씩 줄바꿈되던 문제 → 한 칸으로 쌓기 */
+@media (width<=1023px){
+  :root:not(#jy-fix) .safety-box-screen__workspace {grid-template-columns:minmax(0,1fr)}
+}
+
+/* ir3: "CCTV 영상 확인 구성 보기" 링크 터치 높이 25px → 44px */
+:root:not(#jy-fix) .ir3-new-next a {display:inline-flex;align-items:center;min-height:44px}
+
+/* mobile-cctv: 강점 카드의 세로 제품 사진이 가로 칸에 꽉 채워져 위아래가 잘리던 문제 */
+:root:not(#jy-fix) .dedicated-product-page:has(#mobile-cctv-lineup-title) .product-highlights__card--photo img {object-fit:contain;background:#fff}
