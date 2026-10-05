@@ -73,3 +73,8 @@
 
 /* iot-small-tower-crane: 표시기 사진(원본 1280px)을 1120px로 키워 글자가 뭉개지던 자리 → 표시 폭 상한 */
 :root:not(#jy-fix) .same-reading__media{max-width:720px;margin-inline:auto}
+
+/* ai-broadcast 휴대폰: 언어 흐름 도식 설명 글자가 약 10px로 작던 문제 → 12px 이상 */
+@media (max-width:700px){
+  :root:not(#jy-fix) .language-lanes__kicker,:root:not(#jy-fix) .language-lanes__diagram p{font-size:12px}
+}
