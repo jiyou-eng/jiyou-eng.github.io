@@ -124,7 +124,9 @@
       else if (c && en.boundingClientRect.bottom < 0) io.unobserve(en.target);
     }
   }, { rootMargin: phone ? '0px 0px -8% 0px' : '0px 0px -14% 0px' });
-  groups.forEach(g => io.observe(g.h));
+  /* 처음 그릴 때 이미 화면 안에 있는 묶음은 다시 숨기지 않고 바로 보임(깜빡임 방지) */
+  const inView = e => { const r = e.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; };
+  groups.forEach(g => { if (inView(g.h)) show(g, true); else io.observe(g.h); });
   counters.forEach(c => { c.s.textContent = '0'; io.observe(c.host); });
 
   /* 첫 화면 빠져나가기: 글 묶음은 스크롤보다 느리게 올라가며 옅어지고, 영상은 6%까지 커짐 */
@@ -159,7 +161,7 @@
     if (en.isIntersecting) { en.target.classList.add('is-jh-in'); io2.unobserve(en.target); }
     else if (en.boundingClientRect.bottom < 0) { en.target.classList.add('jh-instant', 'is-jh-in'); io2.unobserve(en.target); }
   }), { rootMargin: '0px 0px -10% 0px' });
-  settle.forEach(e => io2.observe(e));
+  settle.forEach(e => { if (inView(e)) e.classList.add('jh-instant', 'is-jh-in'); else io2.observe(e); });
 
   /* 2차 I3. 번호 핀: 현장 섹션이 처음 보일 때부터 차례로 튀어나오게(탭을 바꿀 때마다 새 패널에서도) */
   const fs = d.getElementById('core-products');
@@ -196,4 +198,5 @@
       io4.observe(roles);
     }
   }
+  window.__jhReady = true;
 })();

@@ -127,4 +127,5 @@
   /* 첫 화면 영상: 화면 밖이면 멈춰 전력 아낌 */
   const video = hero && hero.querySelector('video');
   if (video) new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) video.play().catch(() => {}); else video.pause(); })).observe(hero);
+  window.__cxReady = true;
 })();
