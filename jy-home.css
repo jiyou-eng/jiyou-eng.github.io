@@ -1,0 +1,134 @@
+/* 메인페이지 세부 다듬기 (2026-10-06) — 큰 틀은 그대로 두고 등장·반응·일관성만 얹는다.
+   이 파일과 jy-home.js 를 빼면 원래 화면으로 돌아간다. 숨김은 스크립트가 html.jh-on 을 켤 때만. */
+:root{
+  --jh-ease:cubic-bezier(.16,1,.3,1);            /* 끝에서 부드럽게 멈추는 곡선(Apple 계열) */
+  --jh-press:cubic-bezier(.2,.8,.2,1);
+  --jh-green:oklch(.462 .114 151.5);             /* 브랜드 초록 = 섹션 머리말 색 */
+  --jh-word:45ms;                                /* 낱말 사이 간격 */
+}
+
+/* 1. 섹션 제목: 낱말 단위로 아래→위, 흐림→선명 */
+html.jh-on .jh-w{position:relative;top:.42em;opacity:0;filter:blur(7px);
+  transition:top 1s var(--jh-ease),opacity .7s var(--jh-ease),filter .9s var(--jh-ease);
+  transition-delay:calc(var(--jh-d,0ms) + var(--i,0) * var(--jh-word))}
+html.jh-on .is-jh-in .jh-w{top:0;opacity:1;filter:blur(0)}
+/* 머리말·설명·버튼 줄: 제목 뒤에 따라 올라옴 */
+html.jh-on .jh-up{opacity:0;translate:0 14px;transition:opacity .8s var(--jh-ease),translate 1s var(--jh-ease);transition-delay:var(--jh-d,0ms)}
+html.jh-on .jh-up.is-jh-in{opacity:1;translate:0 0}
+/* 이미 지나간 자리(새로고침·바로가기)는 움직임 없이 바로 보임 */
+html.jh-on .jh-instant .jh-w,html.jh-on .jh-up.jh-instant{transition:none!important}
+/* 기존 덩어리 등장과 겹치지 않게, 내가 맡은 묶음의 부모 등장은 끔 */
+html.jh-on [data-jh-own][data-reveal]{opacity:1!important;animation:none!important;transform:none!important;transition:none!important}
+
+/* 강조 '산업안전에도 감각': 제목이 다 올라온 뒤 형광펜처럼 왼→오 칠함 */
+html.jh-on #sense-circle-title mark{background:linear-gradient(var(--jh-mark),var(--jh-mark)) no-repeat 0 0/0% 100%!important;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:6px!important;
+  transition:background-size 1.1s var(--jh-ease) var(--jh-mark-d,700ms)}
+html.jh-on #sense-circle-title.is-jh-in mark{background-size:100% 100%!important}
+
+/* 숫자 세기 '48종': 폭이 흔들리지 않게 고정폭 숫자 */
+.jh-num{font-variant-numeric:tabular-nums}
+
+/* 2. 첫 화면: 머리말 → (기존 제목 연출) → 버튼 순서 */
+@keyframes jh-rise{from{opacity:0;translate:0 14px;filter:blur(4px)}to{opacity:1;translate:0 0;filter:blur(0)}}
+html.jh-on .home-hero__eyebrow{animation:jh-rise .9s var(--jh-ease) .05s both}
+html.jh-on .home-hero__actions>*{animation:jh-rise .9s var(--jh-ease) both;animation-delay:calc(.35s + var(--k,0) * 90ms)}
+/* 스크롤 시 글 묶음은 천천히 올라가며 옅어지고, 영상은 조금 커짐(값은 스크립트가 넣음) */
+html.jh-on .home-hero__content,html.jh-on .home-hero__ring{will-change:translate,opacity}
+html.jh-on .home-hero__media{will-change:scale;transform-origin:50% 40%}
+/* 휴대폰 제목 묶음(그림 글자 + '에')은 줄을 나누지 않음 */
+.jh-nw{white-space:nowrap}
+@media (max-width:640px){
+  /* 세로로 쌓인 두 버튼 폭을 같게(첫 화면·제품 찾기·상담 카드) */
+  :root:not(#jh) :is(.home-hero__actions,.product-bridge__actions,.jh-cta) .button{width:248px;max-width:100%;justify-content:center}
+  .jh-cta{flex-direction:column}
+}
+
+/* 3. 반응 */
+/* 현장 패널: 탭·번호를 바꿀 때 설명이 살짝 떠오르며 바뀜 */
+@keyframes jh-swap{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+@keyframes jh-soft{from{opacity:.45}to{opacity:1}}
+html.jh-on .field-panel:not([hidden]) .field-heading{animation:jh-swap .5s var(--jh-ease) both}
+html.jh-on .field-panel:not([hidden]) .field-media{animation:jh-soft .45s ease-out both}
+html.jh-on .field-panel:not([hidden]) .field-detail:not([hidden]){animation:jh-swap .5s var(--jh-ease) 60ms both}
+/* 관련 제품 줄: 화살표가 오른쪽으로 밀림 */
+:root:not(#jh) .field-product-link>span[aria-hidden]{transition:translate .28s var(--jh-ease)}
+:root:not(#jh) .field-product-link:is(:hover,:focus-visible)>span[aria-hidden]{translate:4px 0}
+/* 협력사 로고: 올리면 멈춤, 가장자리 흐림 조금 넓게 */
+:root:not(#jh) .jy-marquee{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+:root:not(#jh) .jy-marquee:hover .jy-marquee__track{animation-play-state:paused}
+
+/* 4. 일관성: 섹션 머리말 한 가지 모양, 강조색 하나 */
+:root:not(#jh) :is(.sense-circle__kicker,.case-feature__kicker,.product-bridge__eyebrow){color:var(--jh-green)!important;font-size:15px!important;font-weight:700!important;letter-spacing:.04em!important;line-height:1.5!important}
+:root:not(#jh) .sense-circle__kicker *{color:inherit!important;letter-spacing:inherit!important}
+:root:not(#jh) .case-feature__key{color:var(--jh-green)!important;-webkit-text-fill-color:currentColor}
+/* 큰 제목: 줄간격·자간 통일, 줄 고르게 */
+:root:not(#jh) :is(#sense-circle-title,#case-feature-title,#core-products-title,#product-bridge-title,#next-step-title){line-height:1.26!important;letter-spacing:-.035em!important;text-wrap:balance;word-break:keep-all}
+
+/* 5. 신뢰: 마지막 상담 카드를 흰 카드로 띄우고, 대표 전화를 두 번째 버튼으로 */
+:root:not(#jh) #consultation.next-step--card{background:#fff!important;border-color:color-mix(in srgb,#0b2a1d 8%,transparent)!important;
+  box-shadow:0 1px 2px rgb(16 40 30/.04),0 28px 64px -30px rgb(16 40 30/.26)!important}
+.jh-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
+.jh-cta>.button{margin:0!important}
+
+@media (prefers-reduced-motion:reduce){
+  html.jh-on .jh-w,html.jh-on .jh-up,html.jh-on .home-hero__eyebrow,html.jh-on .home-hero__actions>*{opacity:1!important;top:0!important;translate:none!important;filter:none!important;animation:none!important;transition:none!important}
+  html.jh-on #sense-circle-title mark{background-size:100% 100%!important;transition:none!important}
+}
+
+/* ───────── 2차 (2026-10-06): 스크롤 느낌·부품 반응·효과 ───────── */
+:root{--jh-spring:cubic-bezier(.34,1.56,.64,1)}  /* 살짝 넘쳤다 돌아오는 곡선(핀·점등) */
+
+/* S1. 첫 화면 → 흰 장: 다음 섹션이 둥근 윗모서리로 첫 화면 위에 올라탐. 첫 화면은 스크롤에 따라 어두워지고 물러남 */
+:root:not(#jh) .sense-circle{position:relative;z-index:2;margin-top:-28px;border-top:0!important;border-radius:28px 28px 0 0;
+  padding-top:calc(clamp(64px,8vw,96px) + 28px)!important;box-shadow:0 -22px 44px -30px rgb(0 0 0/.55)}
+:root:not(#jh) .home-hero{isolation:isolate}
+.jh-dim{position:absolute;inset:0;z-index:5;pointer-events:none;background:#04070d;opacity:0}
+@media (max-width:767px){:root:not(#jh) .sense-circle{margin-top:-22px;border-radius:22px 22px 0 0;padding-top:calc(64px + 22px)!important}}
+
+/* S2. 큰 덩어리 안착: 로고판·현장 패널·오감 도식·상담 카드가 살짝 아래·작게 있다가 제자리로 */
+html.jh-on .jh-settle{translate:0 36px;scale:.975;transition:translate 1.2s var(--jh-ease),scale 1.2s var(--jh-ease),opacity .9s var(--jh-ease)}
+html.jh-on .jh-settle.jh-fade{opacity:0}
+html.jh-on .jh-settle.is-jh-in{translate:0 0;scale:1;opacity:1}
+html.jh-on .jh-settle.jh-instant{transition:none}
+
+/* S3. 머리글 숨김·보임을 더 부드럽게 */
+:root:not(#jh) .site-header{transition:transform .5s var(--jh-ease),background-color .3s ease,box-shadow .3s ease!important}
+
+/* I1. 관련 제품 줄: 빛이 글자에 딱 붙지 않게 바깥으로 12px 넓히고 둥글게, 누르면 살짝 들어감 */
+:root:not(#jh) .field-product-link>:is(.jg-light,.jg-edge){inset:2px -14px!important;border-radius:12px!important}
+:root:not(#jh) .field-product-link{-webkit-tap-highlight-color:transparent;transition:scale .14s var(--jh-press)}
+:root:not(#jh) .field-product-link::before{content:"";position:absolute;inset:2px -14px;border-radius:12px;z-index:-1;
+  background:color-mix(in srgb,var(--jh-green) 7%,transparent);opacity:0;transition:opacity .2s ease}
+:root:not(#jh) .field-product-link:hover{background:transparent!important}
+:root:not(#jh) .field-product-link:is(:hover,:focus-visible)::before{opacity:1;background:color-mix(in srgb,var(--jh-green) 5%,#f4f6f5)}
+:root:not(#jh) .field-product-link:active{scale:.99}
+:root:not(#jh) .field-product-link:active::before{opacity:1;background:color-mix(in srgb,var(--jh-green) 10%,#f4f6f5)}
+
+/* I2. 담당자 탭: 누르면 글자가 살짝 들어감 */
+:root:not(#jh) .field-roles a{-webkit-tap-highlight-color:transparent}
+:root:not(#jh) .field-roles a strong{transition:scale .14s var(--jh-press)}
+:root:not(#jh) .field-roles a:active strong{scale:.95}
+
+/* I3. 번호 핀: 처음 보일 때 차례로 톡 튀어나오고, 고른 핀은 두 번 물결 */
+@keyframes jh-pin-pop{from{scale:.3;opacity:0}to{scale:1;opacity:1}}
+@keyframes jh-ripple{from{scale:1;opacity:.55}to{scale:1.9;opacity:0}}
+html.jh-on .jh-pins-ready .field-panel:not([hidden]) .field-pins button{animation:jh-pin-pop .62s var(--jh-spring) backwards;animation-delay:calc(var(--n,0) * 70ms + 120ms)}
+:root:not(#jh) .field-pins button{-webkit-tap-highlight-color:transparent}
+html.jh-on .field-pins button[aria-pressed=true]::after{content:"";position:absolute;inset:-1px;border-radius:50%;pointer-events:none;
+  box-shadow:0 0 0 2px var(--accent,var(--jh-green));animation:jh-ripple 1.5s var(--jh-ease) .2s 2 both}
+:root:not(#jh) .field-pins button:active{scale:.92!important}
+
+/* A1. 핀과 대상 잇는 선: 끝점이 톡 나타남(선 자라기는 스크립트) */
+@keyframes jh-dot{from{scale:0}to{scale:1}}
+html.jh-on .field-targets g[data-active] circle{transform-box:fill-box;transform-origin:center;animation:jh-dot .4s var(--jh-spring) .28s backwards}
+
+/* A2. 오감 원: 스크롤로 하나씩 켜질 때 살짝 튀었다 자리 잡음 */
+@keyframes jh-lit{0%{scale:1}45%{scale:1.16}100%{scale:1.06}}
+html.jh-on .sense-circle__node[data-lit] a{animation:jh-lit .7s var(--jh-spring)}
+:root:not(#jh) .sense-circle__node a{-webkit-tap-highlight-color:transparent}
+
+@media (prefers-reduced-motion:reduce){
+  html.jh-on .jh-settle{translate:none!important;scale:none!important;opacity:1!important;transition:none!important}
+  html.jh-on .field-pins button,html.jh-on .field-pins button::after,html.jh-on .field-targets circle,html.jh-on .sense-circle__node a{animation:none!important}
+}
