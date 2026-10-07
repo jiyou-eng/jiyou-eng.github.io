@@ -8,8 +8,9 @@
   --jc-word:45ms;                                /* 낱말 사이 간격 */
 }
 
-/* 1. 섹션 제목: 낱말 단위로 아래→위, 흐림→선명. 낱말은 transform 이 먹도록 inline-block 으로 둔다 */
-html.jc-on .jc-w{display:inline-block;translate:0 .42em;opacity:0;filter:blur(7px);
+/* 1. 섹션 제목: 낱말 단위로 아래→위, 흐림→선명. 낱말은 transform 이 먹도록 inline-block 으로 둔다.
+   nowrap: 휴대폰에서 낱말 상자 폭이 글자보다 0.5px만 좁게 잡혀도 끝 글자가 아랫줄로 떨어지므로('남기/지') 낱말 안에서는 줄을 못 바꾸게 함 */
+html.jc-on .jc-w{display:inline-block;white-space:nowrap;translate:0 .42em;opacity:0;filter:blur(7px);
   transition:translate 1s var(--jc-ease),opacity .7s var(--jc-ease),filter .9s var(--jc-ease);
   transition-delay:calc(var(--jc-d,0ms) + var(--i,0) * var(--jc-word))}
 html.jc-on .is-jc-in .jc-w{translate:0 0;opacity:1;filter:blur(0)}
