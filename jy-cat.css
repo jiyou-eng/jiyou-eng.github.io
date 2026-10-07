@@ -8,11 +8,13 @@
   --jc-word:45ms;                                /* 낱말 사이 간격 */
 }
 
-/* 1. 섹션 제목: 낱말 단위로 아래→위, 흐림→선명. 낱말은 transform 이 먹도록 inline-block 으로 둔다 */
-html.jc-on .jc-w{display:inline-block;translate:0 .42em;opacity:0;filter:blur(7px);
-  transition:translate 1s var(--jc-ease),opacity .7s var(--jc-ease),filter .9s var(--jc-ease);
+/* 1. 섹션 제목: 낱말 단위로 아래→위, 흐림→선명. 메인(jy-home)처럼 낱말을 글줄 그대로(inline) 두고 top 으로 올린다.
+   inline-block 상자로 두면 삼성 인터넷(폴드 외부화면 등)에서 상자 폭이 글자보다 좁게 잡혀 끝 글자가 아랫줄로 떨어졌다('남기/지').
+   nowrap: 낱말 안에서는 어떤 경우에도 줄을 바꾸지 않음 */
+html.jc-on .jc-w{position:relative;top:.42em;white-space:nowrap;opacity:0;filter:blur(7px);
+  transition:top 1s var(--jc-ease),opacity .7s var(--jc-ease),filter .9s var(--jc-ease);
   transition-delay:calc(var(--jc-d,0ms) + var(--i,0) * var(--jc-word))}
-html.jc-on .is-jc-in .jc-w{translate:0 0;opacity:1;filter:blur(0)}
+html.jc-on .is-jc-in .jc-w{top:0;opacity:1;filter:blur(0)}
 /* 머리말·설명·버튼 줄: 제목 뒤에 따라 올라옴 */
 html.jc-on .jc-up{opacity:0;translate:0 14px;transition:opacity .8s var(--jc-ease),translate 1s var(--jc-ease);transition-delay:var(--jc-d,0ms)}
 html.jc-on .jc-up.is-jc-in{opacity:1;translate:0 0}
