@@ -19,3 +19,8 @@ html[data-header] :is(.chapter-nav,.company-chapters,.filter-bar,.contact-prepar
   .site-header .desktop-nav[data-astro-cid-6stfpryv],.site-header .header-cta[data-astro-cid-6stfpryv],.site-header .header-portal{display:none}
   .site-header .mobile-menu[data-astro-cid-6stfpryv]{display:block}
 }
+
+/* '서비스 바로가기'는 마우스를 쓰는 PC(1024px 이상)에서만 길게 쓰고, 휴대폰·태블릿(터치)에서는 '서비스'로 줄인다.
+   태블릿은 글자 크기 설정으로 글자가 커져 상단 메뉴가 두 줄로 갈라지는 일이 있었다(2026-10-10). */
+.nav-label-more{display:none;margin-left:.28em}
+@media (hover:hover) and (pointer:fine) and (width>=1024px){.nav-label-more{display:inline}}
