@@ -12,3 +12,10 @@ html[data-header] :is(.chapter-nav,.company-chapters,.filter-bar,.contact-prepar
   html[data-header] .site-header,
   html[data-header] :is(.chapter-nav,.company-chapters,.filter-bar,.contact-preparation h2,.broadcast-moment__statement,.narrative-section,.product-narrative-page__anchor,#solution-axes-title,[data-scrolly-stage]){transition:none}
 }
+
+/* 2026-10-10 '서비스 바로가기' 메뉴 추가로 상단 메뉴가 5개가 됨.
+   마우스 화면 680~819px에서는 메뉴가 두 줄로 갈라지므로, 휴대폰처럼 메뉴 단추(서랍)로 연다. */
+@media (680px<=width<=819px){
+  .site-header .desktop-nav[data-astro-cid-6stfpryv],.site-header .header-cta[data-astro-cid-6stfpryv],.site-header .header-portal{display:none}
+  .site-header .mobile-menu[data-astro-cid-6stfpryv]{display:block}
+}
